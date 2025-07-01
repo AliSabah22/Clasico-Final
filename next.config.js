@@ -17,19 +17,7 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Allow all domains for Vercel deployment
-    domains: ['vercel.app', 'vercel.com'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '*.vercel.app',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.vercel.com',
-      },
-    ],
-    // Disable image optimization for better compatibility
+    // Disable image optimization completely for debugging
     unoptimized: true,
   },
 

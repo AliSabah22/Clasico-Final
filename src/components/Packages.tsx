@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
 
 const packages = [
   {
@@ -63,17 +62,20 @@ export default function Packages() {
                 </div>
               )}
 
-              {/* Package Logo - Positioned above package name */}
+              {/* Package Logo - Using regular img tag for testing */}
               <div className="flex justify-center mb-6">
-                <div className="relative w-24 h-24 bg-gray-50 rounded-lg overflow-hidden">
-                  <Image
+                <div className="relative w-24 h-24 bg-gray-50 rounded-lg overflow-hidden flex items-center justify-center">
+                  <img
                     src={pkg.logo}
                     alt={`${pkg.name} logo`}
-                    width={96}
-                    height={96}
                     className="object-contain w-full h-full"
-                    unoptimized={true}
-                    priority={index === 1} // Priority for the popular package
+                    onError={(e) => {
+                      console.error(`Failed to load image: ${pkg.logo}`);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log(`Successfully loaded image: ${pkg.logo}`);
+                    }}
                   />
                 </div>
               </div>

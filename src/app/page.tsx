@@ -99,14 +99,17 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative w-full max-w-sm"
           >
-            <Image
+            <img
               src="/images/hero/clasico-brand.png"
               alt="Clasico Barbershop Brand"
-              width={400}
-              height={400}
-              className="object-contain"
-              priority
-              unoptimized={true}
+              className="object-contain w-full h-full max-w-sm"
+              onError={(e) => {
+                console.error('Failed to load hero brand image');
+                e.currentTarget.style.display = 'none';
+              }}
+              onLoad={() => {
+                console.log('Successfully loaded hero brand image');
+              }}
             />
           </motion.div>
         </div>
