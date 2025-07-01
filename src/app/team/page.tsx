@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Star } from "lucide-react";
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/Footer";
@@ -10,6 +10,16 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default function TeamPage() {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading delay to prevent SSR issues
+    const timer = setTimeout(() => {
+      setImagesLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const teamMembers = [
       {
     name: "Nemar",
@@ -60,18 +70,21 @@ export default function TeamPage() {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="relative h-[32rem]">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="absolute inset-0 w-full h-full object-cover rounded-full"
-                      onError={(e) => {
-                        console.error(`Failed to load team member image: ${member.image}`);
-                        e.currentTarget.style.display = 'none';
-                      }}
-                      onLoad={() => {
-                        console.log(`Successfully loaded team member image: ${member.image}`);
-                      }}
-                    />
+                    {imagesLoaded && (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="absolute inset-0 w-full h-full object-cover rounded-full"
+                        loading="lazy"
+                        onError={(e) => {
+                          console.error(`Failed to load team member image: ${member.image}`);
+                          e.currentTarget.style.display = 'none';
+                        }}
+                        onLoad={() => {
+                          console.log(`Successfully loaded team member image: ${member.image}`);
+                        }}
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
                   <div className="p-6">

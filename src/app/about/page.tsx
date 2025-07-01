@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { Clock, MapPin, Phone, Star } from "lucide-react";
 import Footer from "../../components/Footer";
 
@@ -7,6 +9,16 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default function AboutPage() {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading delay to prevent SSR issues
+    const timer = setTimeout(() => {
+      setImagesLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const teamMembers = [
       {
     name: "Nemar",
@@ -99,18 +111,21 @@ export default function AboutPage() {
             </div>
 
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl animate-fade-in-right">
-              <img
-                src="/team/team.jpeg"
-                alt="Clasico Barbershop Interior"
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => {
-                  console.error('Failed to load team group image');
-                  e.currentTarget.style.display = 'none';
-                }}
-                onLoad={() => {
-                  console.log('Successfully loaded team group image');
-                }}
-              />
+              {imagesLoaded && (
+                <img
+                  src="/team/team.jpeg"
+                  alt="Clasico Barbershop Interior"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    console.error('Failed to load team group image');
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={() => {
+                    console.log('Successfully loaded team group image');
+                  }}
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
           </div>
@@ -177,18 +192,21 @@ export default function AboutPage() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative h-[32rem]">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      console.error(`Failed to load team member image: ${member.image}`);
-                      e.currentTarget.style.display = 'none';
-                    }}
-                    onLoad={() => {
-                      console.log(`Successfully loaded team member image: ${member.image}`);
-                    }}
-                  />
+                  {imagesLoaded && (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                      loading="lazy"
+                      onError={(e) => {
+                        console.error(`Failed to load team member image: ${member.image}`);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                      onLoad={() => {
+                        console.log(`Successfully loaded team member image: ${member.image}`);
+                      }}
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
                 <div className="p-6">
@@ -207,29 +225,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Contact Info Section */}
-      <section className="py-16 bg-black text-white">
+      {/* Contact Information */}
+      <section className="py-20 bg-black text-white">
         <div className="container-custom">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <MapPin className="w-8 h-8 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
-              <p className="text-white/80">3480 Platinum Dr., Unit 105<br />Mississauga, ON L5M 2S4</p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-display mb-6">
+              Visit Us Today
+            </h2>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+              Experience the Clasico difference. Book your appointment and discover why we're the preferred choice for men's grooming.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <MapPin className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+              <h3 className="text-xl font-display mb-2">Location</h3>
+              <p className="text-white/80">3480 Platinum Dr., Unit 105<br />Mississauga, ON</p>
             </div>
-            <div className="flex flex-col items-center">
-              <Clock className="w-8 h-8 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Hours</h3>
-              <p className="text-white/80">Mon-Sat: 10AM-10PM</p>
+            <div className="text-center p-6">
+              <Phone className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+              <h3 className="text-xl font-display mb-2">Phone</h3>
+              <p className="text-white/80">(905) 607-4400</p>
             </div>
-            <div className="flex flex-col items-center">
-              <Phone className="w-8 h-8 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-              <p className="text-white/80">(905) 607-4400<br />hello@clasicobarbershop.com</p>
+            <div className="text-center p-6">
+              <Clock className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+              <h3 className="text-xl font-display mb-2">Hours</h3>
+              <p className="text-white/80">Mon-Sat: 9AM-8PM<br />Sunday: 10AM-6PM</p>
             </div>
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </>
   );
