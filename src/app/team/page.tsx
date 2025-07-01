@@ -8,30 +8,30 @@ import Footer from "@/components/Footer";
 
 export default function TeamPage() {
   const teamMembers = [
-    {
-      name: "Nemar",
-      role: "The Clipperhands",
-      experience: "8+ Years",
-      image: "/team/Nemar.jpeg"
+      {
+    name: "Nemar",
+    role: "The Clipperhands",
+    experience: "8+ Years",
+    image: "/team/nemar.jpeg"
   },
   {
     name: "Humam",
-      role: "The Fade Technician",
-      experience: "3+ Years", 
-      image: "/team/humam.jpeg"
+    role: "The Fade Technician",
+    experience: "3+ Years", 
+    image: "/team/humam.jpeg"
   },
   {
-      name: "Ali",
-      role: "Mr.Scissorhands",
-      experience: "8+ Years",
-      image: "/team/Ali.jpeg"
-    },
-    {
-      name: "Akram",
-      role: "The Style Master",
-      experience: "5+ Years",
-      image: "/team/Akram.jpeg"
-    }
+    name: "Ali",
+    role: "Mr.Scissorhands",
+    experience: "8+ Years",
+    image: "/team/ali.jpeg"
+  },
+  {
+    name: "Akram",
+    role: "The Style Master",
+    experience: "5+ Years",
+    image: "/team/akram.jpeg"
+  }
 ];
 
   return (

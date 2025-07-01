@@ -55,7 +55,7 @@ export default function SignatureExperience() {
           {/* Right Content - Video/Image */}
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxury">
             <Image
-              src="/images/signature-experience.jpg"
+              src="/images/signature-experience.jpeg"
               alt="Signature barbershop experience"
               fill
               className="object-cover"
