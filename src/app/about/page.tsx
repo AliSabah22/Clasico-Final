@@ -35,14 +35,17 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden -mt-20">
-        <Image
+        <img
           src="/images/hero/hero-bg.jpg"
           alt="About Clasico Barbershop"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            console.error('Failed to load about hero background image');
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoad={() => {
+            console.log('Successfully loaded about hero background image');
+          }}
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="container-custom relative z-10 text-center">

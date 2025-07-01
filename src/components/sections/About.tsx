@@ -50,11 +50,17 @@ export default function About() {
               className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 transition-colors duration-300"
             >
               <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image
+                <img
                   src={member.image}
                   alt={member.name}
-                  fill
-                  className="object-cover"
+                  className="absolute inset-0 w-full h-full object-cover rounded-full"
+                  onError={(e) => {
+                    console.error(`Failed to load team member image: ${member.image}`);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={() => {
+                    console.log(`Successfully loaded team member image: ${member.image}`);
+                  }}
                 />
               </div>
               <h3 className="text-xl font-display text-white mb-2">{member.name}</h3>

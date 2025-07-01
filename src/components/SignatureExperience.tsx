@@ -54,12 +54,17 @@ export default function SignatureExperience() {
 
           {/* Right Content - Video/Image */}
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxury">
-            <Image
+            <img
               src="/images/signature-experience.jpeg"
               alt="Signature barbershop experience"
-              fill
-              className="object-cover"
-              unoptimized
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              onError={(e) => {
+                console.error('Failed to load signature experience image');
+                e.currentTarget.style.display = 'none';
+              }}
+              onLoad={() => {
+                console.log('Successfully loaded signature experience image');
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             

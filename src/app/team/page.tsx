@@ -57,11 +57,17 @@ export default function TeamPage() {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="relative h-[32rem]">
-                    <Image
+                    <img
                       src={member.image}
                       alt={member.name}
-                      fill
-                      className="object-cover object-top"
+                      className="absolute inset-0 w-full h-full object-cover rounded-full"
+                      onError={(e) => {
+                        console.error(`Failed to load team member image: ${member.image}`);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                      onLoad={() => {
+                        console.log(`Successfully loaded team member image: ${member.image}`);
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>

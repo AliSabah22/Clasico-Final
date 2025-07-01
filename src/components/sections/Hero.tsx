@@ -36,28 +36,34 @@ export default function Hero() {
 
       {/* Right Side - Image (Desktop) */}
       <div className="hidden lg:block w-1/2 relative">
-        <Image
+        <img
           src="/images/hero/hero-bg.jpg"
           alt="Clasico Barbershop interior"
-          fill
-          className="object-cover"
-          priority
-          quality={60}
-          sizes="50vw"
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            console.error('Failed to load hero background image (desktop)');
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoad={() => {
+            console.log('Successfully loaded hero background image (desktop)');
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
       </div>
 
       {/* Mobile Background */}
       <div className="lg:hidden absolute inset-0 z-0">
-        <Image
+        <img
           src="/images/hero/hero-bg.jpg"
           alt="Clasico Barbershop interior"
-          fill
-          className="object-cover"
-          priority
-          quality={60}
-          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            console.error('Failed to load hero background image');
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoad={() => {
+            console.log('Successfully loaded hero background image');
+          }}
         />
         <div className="absolute inset-0 bg-black/60" />
       </div>

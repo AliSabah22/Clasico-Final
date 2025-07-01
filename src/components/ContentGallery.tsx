@@ -57,11 +57,17 @@ export default function ContentGallery() {
               style={{ animationDelay: `${idx * 0.1}s` }}
               onClick={() => setActiveVideo(video.id)}
             >
-              <Image
+              <img
                 src={video.thumbnail}
                 alt={video.title}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                onError={(e) => {
+                  console.error(`Failed to load video thumbnail: ${video.thumbnail}`);
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoad={() => {
+                  console.log(`Successfully loaded video thumbnail: ${video.thumbnail}`);
+                }}
               />
               
               {/* Overlay */}

@@ -43,15 +43,10 @@ export default function Home() {
       <section className="relative h-screen flex overflow-hidden -mt-20">
         {/* Left Side - Content with Background Image */}
         <div className="w-1/2 relative flex items-center justify-center">
-          <Image
+          <img
             src="/images/hero/hero-bg.jpg"
             alt="Luxury barbershop interior"
-            fill
-            className="object-cover"
-            priority
-            quality={90}
-            sizes="50vw"
-            unoptimized={true}
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
           

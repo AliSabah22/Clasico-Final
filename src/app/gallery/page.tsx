@@ -36,12 +36,17 @@ export default function GalleryPage() {
                   className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <Image
+                  <img
                     src={image}
                     alt={`Gallery image ${index + 1}`}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      console.error(`Failed to load gallery image: ${image}`);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log(`Successfully loaded gallery image: ${image}`);
+                    }}
                   />
                 </div>
               ))}
