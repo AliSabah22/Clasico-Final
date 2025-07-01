@@ -65,12 +65,15 @@ export default function Packages() {
 
               {/* Package Logo - Positioned above package name */}
               <div className="flex justify-center mb-6">
-                <div className="relative w-24 h-24">
+                <div className="relative w-24 h-24 bg-gray-50 rounded-lg overflow-hidden">
                   <Image
                     src={pkg.logo}
                     alt={`${pkg.name} logo`}
-                    fill
-                    className="object-contain"
+                    width={96}
+                    height={96}
+                    className="object-contain w-full h-full"
+                    unoptimized={true}
+                    priority={index === 1} // Priority for the popular package
                   />
                 </div>
               </div>

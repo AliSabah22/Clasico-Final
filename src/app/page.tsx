@@ -51,6 +51,7 @@ export default function Home() {
             priority
             quality={90}
             sizes="50vw"
+            unoptimized={true}
           />
           <div className="absolute inset-0 bg-black/50" />
           
@@ -99,12 +100,13 @@ export default function Home() {
             className="relative w-full max-w-sm"
           >
             <Image
-              src="/images/hero/Clasico brand.png"
+              src="/images/hero/clasico-brand.png"
               alt="Clasico Barbershop Brand"
               width={400}
               height={400}
               className="object-contain"
               priority
+              unoptimized={true}
             />
           </motion.div>
         </div>
