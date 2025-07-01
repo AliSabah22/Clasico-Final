@@ -1,10 +1,13 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Star } from "lucide-react";
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/Footer";
+
+// Force dynamic rendering to prevent build timeout
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function TeamPage() {
   const teamMembers = [

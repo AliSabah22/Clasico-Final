@@ -1,7 +1,10 @@
 import React from "react";
-import Image from "next/image";
 import { Clock, MapPin, Phone, Star } from "lucide-react";
 import Footer from "../../components/Footer";
+
+// Force dynamic rendering to prevent build timeout
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function AboutPage() {
   const teamMembers = [
@@ -96,11 +99,17 @@ export default function AboutPage() {
             </div>
 
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl animate-fade-in-right">
-              <Image
+              <img
                 src="/team/team.jpeg"
                 alt="Clasico Barbershop Interior"
-                fill
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
+                onError={(e) => {
+                  console.error('Failed to load team group image');
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoad={() => {
+                  console.log('Successfully loaded team group image');
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
@@ -168,11 +177,17 @@ export default function AboutPage() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative h-[32rem]">
-                  <Image
+                  <img
                     src={member.image}
                     alt={member.name}
-                    fill
-                    className="object-cover object-top"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      console.error(`Failed to load team member image: ${member.image}`);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log(`Successfully loaded team member image: ${member.image}`);
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
