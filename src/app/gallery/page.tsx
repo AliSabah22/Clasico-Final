@@ -10,8 +10,8 @@ export default function GalleryPage() {
     "/images/gallary_photos/474389932_17895039927110577_1959066183506360602_n.jpg",
     "/images/gallary_photos/491445309_17906499714110577_8094427299739655103_n.jpeg",
     "/images/gallary_photos/496139148_17908424976110577_6263820544994684137_n.jpeg",
-    "/images/gallary_photos/DSC03191.jpg",
-    "/images/gallary_photos/DSC03992.jpg",
+    "/images/gallary_photos/photo3.jpg",
+    "/images/gallary_photos/photo4.jpg",
   ];
 
   return (

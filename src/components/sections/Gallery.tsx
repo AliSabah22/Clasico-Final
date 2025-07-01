@@ -5,12 +5,12 @@ import Image from 'next/image';
 
 const galleryImages = [
   {
-    src: '/images/gallary_photos/DSC03191.jpg',
+    src: '/images/gallary_photos/photo3.jpg',
     alt: 'Barbershop work 1',
     title: 'Classic Cut'
   },
   {
-    src: '/images/gallary_photos/DSC03992.jpg',
+    src: '/images/gallary_photos/photo4.jpg',
     alt: 'Barbershop work 2',
     title: 'Modern Style'
   },
