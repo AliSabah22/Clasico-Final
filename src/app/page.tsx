@@ -44,7 +44,7 @@ export default function Home() {
         {/* Left Side - Content with Background Image */}
         <div className="w-1/2 relative flex items-center justify-center">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/hero/hero-bg.jpg"
             alt="Luxury barbershop interior"
             fill
             className="object-cover"

@@ -36,7 +36,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden -mt-20">
         <Image
-          src="/images/hero-bg.jpg"
+          src="/images/hero/hero-bg.jpg"
           alt="About Clasico Barbershop"
           fill
           className="object-cover"

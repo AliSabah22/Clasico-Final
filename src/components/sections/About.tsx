@@ -5,22 +5,22 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "John Smith",
+    name: "Nemar",
     role: "Master Barber",
-    image: "/images/barber1.jpg",
-    bio: "With over 15 years of experience, John specializes in classic cuts and modern fades.",
+    image: "/team/nemar.jpeg",
+    bio: "With over 8 years of experience, Nemar specializes in classic cuts and modern fades.",
   },
   {
-    name: "Mike Johnson",
+    name: "Ali",
     role: "Senior Stylist",
-    image: "/images/barber2.jpg",
-    bio: "Mike brings creativity and precision to every cut, with expertise in contemporary styles.",
+    image: "/team/ali.jpeg",
+    bio: "Ali brings creativity and precision to every cut, with expertise in contemporary styles.",
   },
   {
-    name: "David Wilson",
+    name: "Humam",
     role: "Beard Specialist",
-    image: "/images/barber3.jpg",
-    bio: "David is our go-to expert for beard grooming and straight razor shaves.",
+    image: "/team/humam.jpeg",
+    bio: "Humam is our go-to expert for beard grooming and straight razor shaves.",
   },
 ];
 
