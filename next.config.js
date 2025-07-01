@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Production optimizations for Vercel
-  output: 'standalone',
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -19,14 +18,19 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     // Allow all domains for Vercel deployment
+    domains: ['vercel.app', 'vercel.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: '*.vercel.app',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.vercel.com',
       },
     ],
-    // Enable image optimization for production
-    unoptimized: false,
+    // Disable image optimization for better compatibility
+    unoptimized: true,
   },
 
   // Experimental features for performance

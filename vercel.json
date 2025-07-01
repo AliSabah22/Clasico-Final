@@ -64,10 +64,6 @@
     {
       "source": "/sitemap.xml",
       "destination": "/api/sitemap"
-    },
-    {
-      "source": "/images/(.*)",
-      "destination": "/public/images/$1"
     }
   ]
 } 
