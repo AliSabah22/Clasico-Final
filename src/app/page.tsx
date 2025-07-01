@@ -44,7 +44,7 @@ export default function Home() {
         {/* Left Side - Content with Background Image */}
         <div className="w-1/2 relative flex items-center justify-center">
           <img
-            src="/images/hero/hero-bg.jpg"
+            src="/images/hero/hero-bg.jpeg"
             alt="Luxury barbershop interior"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -95,7 +95,7 @@ export default function Home() {
             className="relative w-full max-w-sm"
           >
             <img
-              src="/images/hero/clasico-brand.png"
+              src="/images/hero/clasico-brand.jpeg"
               alt="Clasico Barbershop Brand"
               className="object-contain w-full h-full max-w-sm"
               onError={(e) => {
