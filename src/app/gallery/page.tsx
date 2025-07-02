@@ -8,12 +8,12 @@ export default function GalleryPage() {
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const galleryImages = [
-    "/images/gallary_photos/photo1.jpg?v=2",
-    "/images/gallary_photos/photo2.jpg?v=2",
-    "/images/gallary_photos/photo3.jpg?v=2",
-    "/images/gallary_photos/photo4.jpg?v=2",
-    "/images/gallary_photos/photo5.jpg?v=2",
-    "/images/gallary_photos/photo6.jpg?v=2",
+    "/images/gallery_photos/photo1.jpg?v=2",
+    "/images/gallery_photos/photo2.jpg?v=2",
+    "/images/gallery_photos/photo3.jpg?v=2",
+    "/images/gallery_photos/photo4.jpg?v=2",
+    "/images/gallery_photos/photo5.jpg?v=2",
+    "/images/gallery_photos/photo6.jpg?v=2",
   ];
 
   useEffect(() => {
