@@ -6,7 +6,7 @@ export default function TestImagesPage() {
         <div>
           <h2 className="text-lg font-semibold mb-2">Photo 1</h2>
           <img 
-            src="/images/gallary_photos/photo1.jpg" 
+            src="/images/gallary_photos/photo1.jpg?v=2" 
             alt="Test 1" 
             className="w-full h-64 object-cover rounded"
             onError={(e) => console.error('Failed to load photo1.jpg')}
@@ -16,7 +16,7 @@ export default function TestImagesPage() {
         <div>
           <h2 className="text-lg font-semibold mb-2">Photo 2</h2>
           <img 
-            src="/images/gallary_photos/photo2.jpg" 
+            src="/images/gallary_photos/photo2.jpg?v=2" 
             alt="Test 2" 
             className="w-full h-64 object-cover rounded"
             onError={(e) => console.error('Failed to load photo2.jpg')}
@@ -26,7 +26,7 @@ export default function TestImagesPage() {
         <div>
           <h2 className="text-lg font-semibold mb-2">Logo</h2>
           <img 
-            src="/images/logo.jpg" 
+            src="/images/logo.jpg?v=2" 
             alt="Logo" 
             className="w-full h-64 object-cover rounded"
             onError={(e) => console.error('Failed to load logo.jpg')}
@@ -36,7 +36,7 @@ export default function TestImagesPage() {
         <div>
           <h2 className="text-lg font-semibold mb-2">Hero BG</h2>
           <img 
-            src="/images/hero/hero-bg.jpeg" 
+            src="/images/hero/hero-bg.jpeg?v=2" 
             alt="Hero BG" 
             className="w-full h-64 object-cover rounded"
             onError={(e) => console.error('Failed to load hero-bg.jpeg')}

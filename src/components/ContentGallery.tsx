@@ -6,28 +6,28 @@ import Image from 'next/image';
 const videos = [
   {
     id: 1,
-    thumbnail: "/images/gallery/video1.jpg",
+    thumbnail: "/images/gallery/video1.jpg?v=2",
     title: "Perfect Fade Technique",
     likes: "2.4K",
     comments: "128",
   },
   {
     id: 2,
-    thumbnail: "/images/gallery/video2.jpg",
+    thumbnail: "/images/gallery/video2.jpg?v=2",
     title: "Beard Styling Tips",
     likes: "1.8K",
     comments: "95",
   },
   {
     id: 3,
-    thumbnail: "/images/gallery/video3.jpg",
+    thumbnail: "/images/gallery/video3.jpg?v=2",
     title: "Classic Pompadour",
     likes: "3.2K",
     comments: "156",
   },
   {
     id: 4,
-    thumbnail: "/images/gallery/video4.jpg",
+    thumbnail: "/images/gallery/video4.jpg?v=2",
     title: "Hot Towel Treatment",
     likes: "1.5K",
     comments: "82",

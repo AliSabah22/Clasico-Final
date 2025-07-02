@@ -19,7 +19,7 @@ export default function Services() {
       duration: "45 min",
       luxury: "Standard",
       features: ["3 Haircuts", "3 Beard Trim Line-up (Machine)", "Valid for 3 months only", "Minimum time for haircut is 45 minutes"],
-      image: "/images/packages/silver.png"
+      image: "/images/packages/silver.png?v=2"
     },
     {
       name: "Gold Experience",
@@ -28,7 +28,7 @@ export default function Services() {
       duration: "45 min",
       luxury: "Premium",
       features: ["3 Haircuts", "3 Beard Trim Line-up (Blade/Shaver)", "Valid for 3 months only", "Minimum time for haircut is 45 minutes"],
-      image: "/images/packages/gold.png"
+      image: "/images/packages/gold.png?v=2"
     },
     {
       name: "Platinum Experience",
@@ -37,7 +37,7 @@ export default function Services() {
       duration: "45 min",
       luxury: "Luxury",
       features: ["6 Haircuts", "6 Beard Trim Line-up (Blade/Shaver)", "Valid for 6 months only", "Minimum time for haircut is 45 minutes"],
-      image: "/images/packages/platinum.png"
+      image: "/images/packages/platinum.png?v=2"
     }
   ];
 

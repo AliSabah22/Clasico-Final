@@ -3,7 +3,7 @@ export const getStructuredData = () => {
     '@context': 'https://schema.org',
     '@type': 'BarberShop',
     name: 'Clásico Barbershop',
-    image: 'https://clasicobarbershop.com/images/og-image.jpg',
+    image: 'https://clasicobarbershop.com/images/og-image.jpg?v=2',
     '@id': 'https://clasicobarbershop.com',
     url: 'https://clasicobarbershop.com',
     telephone: '+1-234-567-8900',

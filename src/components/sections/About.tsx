@@ -7,19 +7,19 @@ const teamMembers = [
   {
     name: "Nemar",
     role: "Master Barber",
-    image: "/team/nemar.jpeg",
+    image: "/team/nemar.jpeg?v=2",
     bio: "With over 8 years of experience, Nemar specializes in classic cuts and modern fades.",
   },
   {
     name: "Ali",
     role: "Senior Stylist",
-    image: "/team/ali.jpeg",
+    image: "/team/ali.jpeg?v=2",
     bio: "Ali brings creativity and precision to every cut, with expertise in contemporary styles.",
   },
   {
     name: "Humam",
     role: "Beard Specialist",
-    image: "/team/humam.jpeg",
+    image: "/team/humam.jpeg?v=2",
     bio: "Humam is our go-to expert for beard grooming and straight razor shaves.",
   },
 ];

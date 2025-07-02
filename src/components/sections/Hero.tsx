@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Right Side - Image (Desktop) */}
       <div className="hidden lg:block w-1/2 relative">
         <img
-          src="/images/hero/hero-bg.jpeg"
+          src="/images/hero/hero-bg.jpeg?v=2"
           alt="Clasico Barbershop interior"
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => {
@@ -54,7 +54,7 @@ export default function Hero() {
       {/* Mobile Background */}
       <div className="lg:hidden absolute inset-0 z-0">
         <img
-          src="/images/hero/hero-bg.jpeg"
+          src="/images/hero/hero-bg.jpeg?v=2"
           alt="Clasico Barbershop interior"
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => {

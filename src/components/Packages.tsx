@@ -8,7 +8,7 @@ const packages = [
     description: "Essential grooming services for the modern man",
     price: "$45",
     features: ["Classic Haircut", "Beard Trim", "Hot Towel Treatment"],
-    logo: "/images/packages/silver.png",
+    logo: "/images/packages/silver.png?v=2",
     popular: false
   },
   {
@@ -16,7 +16,7 @@ const packages = [
     description: "Premium grooming experience with luxury touches",
     price: "$75",
     features: ["Premium Haircut", "Beard Styling", "Hot Towel Treatment", "Signature Aftershave"],
-    logo: "/images/packages/gold.png",
+    logo: "/images/packages/gold.png?v=2",
     popular: true
   },
   {
@@ -24,7 +24,7 @@ const packages = [
     description: "Ultimate grooming experience with exclusive services",
     price: "$120",
     features: ["Luxury Haircut", "Beard Sculpting", "Hot Towel Treatment", "Signature Aftershave", "Private Consultation"],
-    logo: "/images/packages/platinum.png",
+    logo: "/images/packages/platinum.png?v=2",
     popular: false
   }
 ];

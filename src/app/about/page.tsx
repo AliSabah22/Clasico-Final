@@ -24,25 +24,25 @@ export default function AboutPage() {
     name: "Nemar",
     role: "The Clipperhands",
     experience: "8+ Years",
-    image: "/team/nemar.jpeg"
+    image: "/team/nemar.jpeg?v=2"
   },
   {
     name: "Humam",
     role: "The Fade Technician",
     experience: "3+ Years", 
-    image: "/team/humam.jpeg"
+    image: "/team/humam.jpeg?v=2"
   },
   {
     name: "Ali",
     role: "Mr.Scissorhands",
     experience: "8+ Years",
-    image: "/team/ali.jpeg"
+    image: "/team/ali.jpeg?v=2"
   },
   {
     name: "Akram",
     role: "The Style Master",
     experience: "5+ Years",
-    image: "/team/akram.jpeg"
+    image: "/team/akram.jpeg?v=2"
   }
   ];
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
         <img
-          src="/images/hero/hero-bg.jpeg"
+          src="/images/hero/hero-bg.jpeg?v=2"
           alt="About Clasico Barbershop"
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => {
@@ -113,7 +113,7 @@ export default function AboutPage() {
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl animate-fade-in-right">
               {imagesLoaded && (
                 <img
-                  src="/team/team.jpeg"
+                  src="/team/team.jpeg?v=2"
                   alt="Clasico Barbershop Interior"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"

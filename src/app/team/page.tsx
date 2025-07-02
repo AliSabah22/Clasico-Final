@@ -25,25 +25,25 @@ export default function TeamPage() {
     name: "Nemar",
     role: "The Clipperhands",
     experience: "8+ Years",
-    image: "/team/nemar.jpeg"
+    image: "/team/nemar.jpeg?v=2"
   },
   {
     name: "Humam",
     role: "The Fade Technician",
     experience: "3+ Years", 
-    image: "/team/humam.jpeg"
+    image: "/team/humam.jpeg?v=2"
   },
   {
     name: "Ali",
     role: "Mr.Scissorhands",
     experience: "8+ Years",
-    image: "/team/ali.jpeg"
+    image: "/team/ali.jpeg?v=2"
   },
   {
     name: "Akram",
     role: "The Style Master",
     experience: "5+ Years",
-    image: "/team/akram.jpeg"
+    image: "/team/akram.jpeg?v=2"
   }
 ];
 

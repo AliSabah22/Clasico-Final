@@ -6,21 +6,21 @@ const experiences = [
   {
     title: "The Classic Cut",
     description: "A timeless haircut that combines traditional techniques with modern precision.",
-    image: "/images/services/service1.jpg",
+    image: "/images/services/service1.jpg?v=2",
     price: "$45",
     duration: "45 min"
   },
   {
     title: "The Royal Shave",
     description: "Experience the art of traditional wet shaving with hot towels and premium products.",
-    image: "/images/services/service2.jpg",
+    image: "/images/services/service2.jpg?v=2",
     price: "$35",
     duration: "30 min"
   },
   {
     title: "The Executive Package",
     description: "A complete grooming experience including haircut, shave, and facial treatment.",
-    image: "/images/services/service3.jpg",
+    image: "/images/services/service3.jpg?v=2",
     price: "$85",
     duration: "90 min"
   }
@@ -48,7 +48,7 @@ export default function SignatureExperience() {
             <span className="block text-gold">Experiences</span>
           </h2>
           
-          <p className="text-xl text-gold/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Discover our curated selection of premium grooming services, each designed
             to deliver an exceptional experience that transcends the ordinary.
           </p>
