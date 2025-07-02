@@ -40,7 +40,7 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex overflow-hidden -mt-20">
+      <section className="relative h-screen flex overflow-hidden pt-24 md:pt-32">
         {/* Left Side - Content with Background Image */}
         <div className="w-1/2 relative flex items-center justify-center">
           <img

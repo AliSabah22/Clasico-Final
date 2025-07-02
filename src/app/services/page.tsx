@@ -90,7 +90,7 @@ export default function ServicesPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden -mt-20">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
         <img
           src="/images/services/service2.jpg"
           alt="Clasico Barbershop Services"

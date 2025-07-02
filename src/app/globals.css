@@ -143,7 +143,7 @@ body {
   }
 
   body {
-    @apply bg-white text-black antialiased font-sans;
+    @apply bg-black text-white antialiased font-sans;
     /* Improve touch scrolling on mobile */
     -webkit-overflow-scrolling: touch;
     /* Prevent zoom on input focus on iOS */

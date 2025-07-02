@@ -48,7 +48,7 @@ export default function SignatureExperience() {
             <span className="block text-gold">Experiences</span>
           </h2>
           
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gold/80 max-w-3xl mx-auto leading-relaxed">
             Discover our curated selection of premium grooming services, each designed
             to deliver an exceptional experience that transcends the ordinary.
           </p>

@@ -25,7 +25,7 @@ export default function SignatureExperience() {
             <h2 className="text-3xl md:text-4xl font-display mb-6 text-gold">
               The Signature Experience
             </h2>
-            <p className="text-black/80 mb-8">
+            <p className="text-gold/80 mb-8">
               Step into a world of refined grooming where every detail is crafted to perfection. 
               Our signature experience combines traditional techniques with modern luxury.
             </p>
@@ -34,7 +34,7 @@ export default function SignatureExperience() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-3 text-black"
+                  className="flex items-center space-x-3 text-gold"
                 >
                   <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center">
                     <span className="text-primary text-sm">✓</span>

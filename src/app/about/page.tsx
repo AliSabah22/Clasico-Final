@@ -49,7 +49,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden -mt-20">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
         <img
           src="/images/hero/hero-bg.jpeg"
           alt="About Clasico Barbershop"
