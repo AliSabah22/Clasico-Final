@@ -83,7 +83,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-serif text-xl font-bold mb-4">Contact</h3>
                   <div className="space-y-2 text-gray-600">
-                    <p>Phone: (647) 559-4641</p>
+                    <p>Phone: (905) 607-4400</p>
                     <p>Email: hello@clasicobarber.com</p>
                   </div>
                 </div>

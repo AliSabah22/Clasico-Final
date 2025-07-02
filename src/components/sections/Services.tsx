@@ -42,12 +42,12 @@ export default function Services() {
   ];
 
   const additionalServices = [
-    { name: "Beard Sculpting", price: "$35", duration: "30 min" },
-    { name: "Hot Towel Shave", price: "$40", duration: "45 min" },
-    { name: "Scalp Treatment", price: "$25", duration: "20 min" },
-    { name: "Hair Coloring", price: "$60", duration: "90 min" },
-    { name: "Style Consultation", price: "$20", duration: "15 min" },
-    { name: "Product Application", price: "$15", duration: "10 min" },
+    { name: "Haircut & beard trim", price: "$45.00", duration: "45 min" },
+    { name: "Scissor cut", price: "$33.25", duration: "45 min" },
+    { name: "Full face wax or threading", price: "$30.00", duration: "30 min" },
+    { name: "Hair styling", price: "$15.00", duration: "20 min" },
+    { name: "Facial (steam, hot towel, black mask and more)", price: "$55.00", duration: "60 min" },
+    { name: "Shampoo & wash", price: "$5.00", duration: "10 min" },
   ];
 
   return (
