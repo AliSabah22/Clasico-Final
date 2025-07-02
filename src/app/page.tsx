@@ -95,7 +95,7 @@ export default function Home() {
             className="relative w-full max-w-sm"
           >
             <img
-              src="/images/hero/clasico-brand.jpeg"
+              src="/images/hero/clasicobrand.jpg"
               alt="Clasico Barbershop Brand"
               className="object-contain w-full h-full max-w-sm"
               onError={(e) => {

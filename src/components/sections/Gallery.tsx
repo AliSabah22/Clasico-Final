@@ -4,36 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 
 const galleryImages = [
-  {
-    src: '/images/gallary_photos/photo3.jpg',
-    alt: 'Barbershop work 1',
-    title: 'Classic Cut'
-  },
-  {
-    src: '/images/gallary_photos/photo4.jpg',
-    alt: 'Barbershop work 2',
-    title: 'Modern Style'
-  },
-  {
-    src: '/images/gallary_photos/469224525_17889610338110577_2569995278072668272_n.jpg',
-    alt: 'Barbershop work 3',
-    title: 'Premium Service'
-  },
-  {
-    src: '/images/gallary_photos/474389932_17895039927110577_1959066183506360602_n.jpg',
-    alt: 'Barbershop work 4',
-    title: 'Expert Craftsmanship'
-  },
-  {
-    src: '/images/gallary_photos/491445309_17906499714110577_8094427299739655103_n.jpeg',
-    alt: 'Barbershop work 5',
-    title: 'Luxury Experience'
-  },
-  {
-    src: '/images/gallary_photos/496139148_17908424976110577_6263820544994684137_n.jpeg',
-    alt: 'Barbershop work 6',
-    title: 'Professional Finish'
-  }
+  '/images/gallary_photos/photo1.jpg',
+  '/images/gallary_photos/photo2.jpg',
+  '/images/gallary_photos/photo3.jpg',
+  '/images/gallary_photos/photo4.jpg',
+  '/images/gallary_photos/photo5.jpg',
+  '/images/gallary_photos/photo6.jpg',
 ];
 
 export default function Gallery() {
@@ -57,20 +33,20 @@ export default function Gallery() {
             >
               <div className="aspect-square relative">
                 <img
-                  src={image.src}
-                  alt={image.alt}
+                  src={image}
+                  alt={`Barbershop work ${index + 1}`}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
-                    console.error(`Failed to load gallery image: ${image.src}`);
+                    console.error(`Failed to load gallery image: ${image}`);
                     e.currentTarget.style.display = 'none';
                   }}
                   onLoad={() => {
-                    console.log(`Successfully loaded gallery image: ${image.src}`);
+                    console.log(`Successfully loaded gallery image: ${image}`);
                   }}
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white">
-                    <h3 className="text-xl font-semibold mb-2">{image.title}</h3>
+                    <h3 className="text-xl font-semibold mb-2">Classic Cut</h3>
                     <p className="text-sm text-white/80">Premium Quality</p>
                   </div>
                 </div>
