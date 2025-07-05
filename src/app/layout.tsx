@@ -1,6 +1,7 @@
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import React from 'react';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({
   children,
@@ -18,6 +19,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );

@@ -87,7 +87,6 @@ export default function ContactPage() {
                     <p>Email: hello@clasicobarber.com</p>
                   </div>
                 </div>
-
                 <div>
                   <h3 className="font-serif text-xl font-bold mb-4">Follow Us</h3>
                   <div className="flex space-x-4">
