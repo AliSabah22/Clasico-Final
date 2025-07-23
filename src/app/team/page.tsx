@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Star } from "lucide-react";
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/Footer";
+import RobustImage from "../../components/ui/RobustImage";
+import { Star } from "lucide-react";
 
 // Force dynamic rendering to prevent build timeout
 export const dynamic = 'force-dynamic';
@@ -25,25 +26,25 @@ export default function TeamPage() {
     name: "Nemar",
     role: "The Clipperhands",
     experience: "8+ Years",
-    image: "/team/nemar.jpeg?v=2"
+    image: "/team/nemar.jpeg"
   },
   {
     name: "Humam",
     role: "The Fade Technician",
     experience: "3+ Years", 
-    image: "/team/humam.jpeg?v=2"
+    image: "/team/humam.jpeg"
   },
   {
     name: "Ali",
     role: "Mr.Scissorhands",
     experience: "8+ Years",
-    image: "/team/ali.jpeg?v=2"
+    image: "/team/ali.jpeg"
   },
   {
     name: "Akram",
     role: "The Style Master",
     experience: "5+ Years",
-    image: "/team/akram.jpeg?v=2"
+    image: "/team/akram.jpeg"
   }
 ];
 
@@ -71,18 +72,12 @@ export default function TeamPage() {
                 >
                   <div className="relative h-[32rem]">
                     {imagesLoaded && (
-                      <img
+                      <RobustImage
                         src={member.image}
                         alt={member.name}
+                        fill
                         className="absolute inset-0 w-full h-full object-cover rounded-full"
-                        loading="lazy"
-                        onError={(e) => {
-                          console.error(`Failed to load team member image: ${member.image}`);
-                          e.currentTarget.style.display = 'none';
-                        }}
-                        onLoad={() => {
-                          console.log(`Successfully loaded team member image: ${member.image}`);
-                        }}
+                        loadingStrategy="lazy"
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

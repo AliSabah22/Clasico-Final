@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import React from 'react';
 import { Analytics } from '@vercel/analytics/next';
 import Script from 'next/script';
+import ImagePreloader from '@/components/ImagePreloader';
 
 export default function RootLayout({
   children,
@@ -29,6 +30,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
+        <ImagePreloader />
         <Navigation />
         <main className="min-h-screen">
           {children}

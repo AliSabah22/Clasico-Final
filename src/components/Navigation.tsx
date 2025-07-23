@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import RobustImage from './ui/RobustImage';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,29 +11,15 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element;
-      
-      if (isMobileMenuOpen && !target.closest('nav')) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMobileMenuOpen]);
-
-  const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -55,115 +41,122 @@ export default function Navigation() {
           {/* Center: Logo - Mobile optimized */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-0">
             <Link href="/" className="touch-manipulation">
-              <Image
-                src="/images/logo.jpg?v=2"
+              <RobustImage
+                src="/images/logo.jpg"
                 alt="Clasico Barbershop Logo"
                 width={240}
                 height={240}
                 priority
                 className="object-contain h-16 sm:h-20 md:h-24 lg:h-28 w-auto drop-shadow-lg"
+                loadingStrategy="eager"
               />
             </Link>
           </div>
 
           {/* Right: Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-x-6 pr-4 md:pr-8 z-10">
-            <Link href="/services" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
-              Services
-            </Link>
-            <Link href="/gallery" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
-              Gallery
-            </Link>
-            <Link href="/about" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
-              About
-            </Link>
-            <Link href="/contact" className="text-gold hover:text-gold/80 transition-colors hover:underline hover:underline-offset-8 hover:decoration-gold text-lg font-medium">
-              Contact
-            </Link>
-            <button 
-              onClick={handleBookNow}
-              className="ml-2 bg-white text-black hover:bg-gold hover:text-white px-6 py-2 rounded-md font-semibold shadow-gold transition-all touch-manipulation"
-            >
-              Book Now
-            </button>
-          </div>
+          <div className="flex-1 flex justify-end">
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-white hover:text-gold transition-colors duration-200 font-medium">
+                Home
+              </Link>
+              <Link href="/about" className="text-white hover:text-gold transition-colors duration-200 font-medium">
+                About
+              </Link>
+              <Link href="/services" className="text-white hover:text-gold transition-colors duration-200 font-medium">
+                Services
+              </Link>
+              <Link href="/team" className="text-white hover:text-gold transition-colors duration-200 font-medium">
+                Team
+              </Link>
+              <Link href="/gallery" className="text-white hover:text-gold transition-colors duration-200 font-medium">
+                Gallery
+              </Link>
+              <Link href="/contact" className="text-white hover:text-gold transition-colors duration-200 font-medium">
+                Contact
+              </Link>
+            </div>
 
-          {/* Mobile Menu Button - Enhanced touch target */}
-          <button
-            className="md:hidden text-gold absolute right-2 top-1/2 -translate-y-1/2 z-10 p-3 touch-manipulation"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <span className="sr-only">Open menu</span>
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            {/* Mobile Menu Button */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden p-2 text-white hover:text-gold transition-colors duration-200"
+              aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu - Enhanced with CSS transitions */}
-      <div 
-        className={`md:hidden bg-black/98 backdrop-blur-md border-t border-gold/20 overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="container-custom py-6 space-y-6">
-          <div className="grid grid-cols-1 gap-4">
-            <Link
-              href="/services"
-              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Services
-            </Link>
-            <Link
-              href="/gallery"
-              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Gallery
-            </Link>
-            <Link
-              href="/about"
-              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
-          </div>
-          
-          <div className="pt-4 border-t border-gold/20">
-            <button 
-              onClick={() => {
-                handleBookNow();
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full bg-white text-black hover:bg-gold hover:text-white px-6 py-4 rounded-lg font-semibold shadow-gold transition-all touch-manipulation text-lg"
-            >
-              Book Now
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-sm border-t border-gold/20">
+            <div className="px-4 py-6 space-y-4">
+              <Link
+                href="/"
+                className="mobile-nav-item text-white hover:text-gold hover:bg-white/10"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="mobile-nav-item text-white hover:text-gold hover:bg-white/10"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                href="/services"
+                className="mobile-nav-item text-white hover:text-gold hover:bg-white/10"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Services
+              </Link>
+              <Link
+                href="/team"
+                className="mobile-nav-item text-white hover:text-gold hover:bg-white/10"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Team
+              </Link>
+              <Link
+                href="/gallery"
+                className="mobile-nav-item text-white hover:text-gold hover:bg-white/10"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Gallery
+              </Link>
+              <Link
+                href="/contact"
+                className="mobile-nav-item text-white hover:text-gold hover:bg-white/10"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

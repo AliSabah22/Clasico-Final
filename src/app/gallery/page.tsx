@@ -2,18 +2,19 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/Footer";
+import RobustImage from "../../components/ui/RobustImage";
 
 export default function GalleryPage() {
   const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const galleryImages = [
-    "/images/gallery_photos/photo1.jpg?v=2",
-    "/images/gallery_photos/photo2.jpg?v=2",
-    "/images/gallery_photos/photo3.jpg?v=2",
-    "/images/gallery_photos/photo4.jpg?v=2",
-    "/images/gallery_photos/photo5.jpg?v=2",
-    "/images/gallery_photos/photo6.jpg?v=2",
+    "/images/gallery_photos/photo1.jpg",
+    "/images/gallery_photos/photo2.jpg",
+    "/images/gallery_photos/photo3.jpg",
+    "/images/gallery_photos/photo4.jpg",
+    "/images/gallery_photos/photo5.jpg",
+    "/images/gallery_photos/photo6.jpg",
   ];
 
   useEffect(() => {
@@ -60,15 +61,13 @@ export default function GalleryPage() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {!imageErrors.has(index) ? (
-                    <img
+                    <RobustImage
                       src={image}
                       alt={`Gallery image ${index + 1}`}
+                      fill
                       className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      loadingStrategy="lazy"
                       onError={() => handleImageError(index)}
-                      onLoad={() => {
-                        console.log(`Successfully loaded gallery image: ${image}`);
-                      }}
-                      loading="eager"
                     />
                   ) : (
                     <div className="absolute inset-0 w-full h-full bg-gray-200 flex items-center justify-center">

@@ -1,12 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Clock, MapPin, Phone, Star } from "lucide-react";
-import Footer from "../../components/Footer";
-
-// Force dynamic rendering to prevent build timeout
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+import Navigation from "../../components/Navigation";
+import Footer from "@/components/Footer";
+import RobustImage from "../../components/ui/RobustImage";
 
 export default function AboutPage() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -20,243 +17,190 @@ export default function AboutPage() {
   }, []);
 
   const teamMembers = [
-      {
-    name: "Nemar",
-    role: "The Clipperhands",
-    experience: "8+ Years",
-    image: "/team/nemar.jpeg?v=2"
-  },
-  {
-    name: "Humam",
-    role: "The Fade Technician",
-    experience: "3+ Years", 
-    image: "/team/humam.jpeg?v=2"
-  },
-  {
-    name: "Ali",
-    role: "Mr.Scissorhands",
-    experience: "8+ Years",
-    image: "/team/ali.jpeg?v=2"
-  },
-  {
-    name: "Akram",
-    role: "The Style Master",
-    experience: "5+ Years",
-    image: "/team/akram.jpeg?v=2"
-  }
+    {
+      name: "Nemar",
+      role: "Master Barber",
+      image: "/team/nemar.jpeg",
+      bio: "With over 8 years of experience, Nemar specializes in classic cuts and modern fades.",
+    },
+    {
+      name: "Ali",
+      role: "Senior Stylist",
+      image: "/team/ali.jpeg",
+      bio: "Ali brings creativity and precision to every cut, with expertise in contemporary styles.",
+    },
+    {
+      name: "Humam",
+      role: "Beard Specialist",
+      image: "/team/humam.jpeg",
+      bio: "Humam is our go-to expert for beard grooming and straight razor shaves.",
+    },
   ];
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
-        <img
-          src="/images/hero/hero-bg.jpeg?v=2"
-          alt="About Clasico Barbershop"
-          className="absolute inset-0 w-full h-full object-cover"
-          onError={(e) => {
-            console.error('Failed to load about hero background image');
-            e.currentTarget.style.display = 'none';
-          }}
-          onLoad={() => {
-            console.log('Successfully loaded about hero background image');
-          }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="container-custom relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-display text-white mb-4 animate-fade-in">
-            About Us
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto animate-fade-in-delay">
-            Discover the story, values, and people behind Clasico Barbershop.
-          </p>
-        </div>
-      </section>
-
-      {/* About the Shop Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
-              Our Story
-            </h2>
-            <p className="text-xl text-black/70 max-w-4xl mx-auto leading-relaxed">
-              Founded in 2022, Clasico Barbershop has been the premier destination for men's grooming in our community. 
-              We blend traditional barbering techniques with modern luxury to create an experience that goes beyond just a haircut.
+      <Navigation />
+      <main className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
+          <RobustImage
+            src="/images/hero/hero-bg.jpeg"
+            alt="About Clasico Barbershop"
+            fill
+            className="absolute inset-0 w-full h-full object-cover"
+            priority
+            loadingStrategy="eager"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="container-custom relative z-10 text-center">
+            <h1 className="text-4xl md:text-6xl font-display text-white mb-4 animate-fade-in">
+              About Us
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto animate-fade-in-delay">
+              Discover the story, values, and people behind Clasico Barbershop.
             </p>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in-left">
-              <h3 className="text-3xl font-display mb-6 text-black">Our Mission</h3>
-              <p className="text-black/80 mb-6 leading-relaxed">
-                At Clasico Barbershop, we believe that every man deserves to look and feel his best. Our mission is to provide 
-                exceptional grooming services in a welcoming, sophisticated environment where tradition meets innovation.
-              </p>
-              <p className="text-black/80 mb-8 leading-relaxed">
-                We take pride in our attention to detail, commitment to quality, and the relationships we build with our clients. 
-                Every visit is an opportunity to transform not just your appearance, but your confidence.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">15+</div>
-                  <div className="text-sm text-black/70">Years Experience</div>
-                </div>
-                <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">10K+</div>
-                  <div className="text-sm text-black/70">Happy Clients</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl animate-fade-in-right">
-              {imagesLoaded && (
-                <img
-                  src="/team/team.jpeg?v=2"
-                  alt="Clasico Barbershop Interior"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    console.error('Failed to load team group image');
-                    e.currentTarget.style.display = 'none';
-                  }}
-                  onLoad={() => {
-                    console.log('Successfully loaded team group image');
-                  }}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
-              Our Values
-            </h2>
-            <p className="text-xl text-black/70 max-w-3xl mx-auto">
-              The principles that guide everything we do at Clasico Barbershop
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Excellence",
-                description: "We strive for perfection in every cut, every service, and every interaction with our clients."
-              },
-              {
-                title: "Tradition",
-                description: "We honor the timeless art of barbering while embracing modern techniques and trends."
-              },
-              {
-                title: "Community",
-                description: "We're more than a barbershop - we're a gathering place for men to connect and share stories."
-              }
-            ].map((value, index) => (
-              <div
-                key={value.title}
-                className={`text-center p-8 bg-gray-50 rounded-xl animate-fade-in-up`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <h3 className="text-2xl font-display mb-4 text-black">{value.title}</h3>
-                <p className="text-black/70 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Meet the Team Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container-custom">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
-              Meet the Team
-            </h2>
-            <p className="text-xl text-black/70 max-w-3xl mx-auto">
-              Our skilled professionals are passionate about their craft and dedicated to providing you with the best grooming experience.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={member.name}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="relative h-[32rem]">
-                  {imagesLoaded && (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="absolute inset-0 w-full h-full object-cover object-top"
-                      loading="lazy"
-                      onError={(e) => {
-                        console.error(`Failed to load team member image: ${member.image}`);
-                        e.currentTarget.style.display = 'none';
-                      }}
-                      onLoad={() => {
-                        console.log(`Successfully loaded team member image: ${member.image}`);
-                      }}
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-display mb-2 text-black">{member.name}</h3>
-                  <p className="text-yellow-600 font-semibold mb-3">{member.role}</p>
-                  <div className="space-y-2 text-sm text-black/70">
-                    <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-yellow-500" />
-                      <span>{member.experience} Experience</span>
-                    </div>
+        {/* About the Shop Section */}
+        <section className="py-20 bg-white">
+          <div className="container-custom">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6 animate-fade-in-left">
+                <h2 className="text-4xl md:text-5xl font-display text-black">
+                  Our Story
+                </h2>
+                <p className="text-lg text-black/70 leading-relaxed">
+                  Founded in 2010, Clasico Barbershop has been the premier destination for men's grooming in Mississauga. 
+                  We combine traditional barbering techniques with modern styling to create the perfect look for every client.
+                </p>
+                <p className="text-lg text-black/70 leading-relaxed">
+                  Our commitment to excellence, attention to detail, and passion for the craft has made us a trusted name 
+                  in the community. We believe that every man deserves to look and feel his best.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                    <div className="text-3xl font-bold text-yellow-600 mb-2">15+</div>
+                    <div className="text-sm text-black/70">Years Experience</div>
+                  </div>
+                  <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                    <div className="text-3xl font-bold text-yellow-600 mb-2">10K+</div>
+                    <div className="text-sm text-black/70">Happy Clients</div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Information */}
-      <section className="py-20 bg-black text-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display mb-6">
-              Visit Us Today
-            </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              Experience the Clasico difference. Book your appointment and discover why we're the preferred choice for men's grooming.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <MapPin className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-xl font-display mb-2">Location</h3>
-              <p className="text-white/80">3480 Platinum Dr., Unit 105<br />Mississauga, ON</p>
-            </div>
-            <div className="text-center p-6">
-              <Phone className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-xl font-display mb-2">Phone</h3>
-              <p className="text-white/80">(905) 607-4400</p>
-            </div>
-            <div className="text-center p-6">
-              <Clock className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-xl font-display mb-2">Hours</h3>
-              <p className="text-white/80">Mon-Sat: 9AM-8PM<br />Sunday: 10AM-6PM</p>
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl animate-fade-in-right">
+                {imagesLoaded && (
+                  <RobustImage
+                    src="/team/team.jpeg"
+                    alt="Clasico Barbershop Interior"
+                    fill
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loadingStrategy="lazy"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        {/* Values Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="container-custom">
+            <div className="text-center mb-16 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
+                Our Values
+              </h2>
+              <p className="text-xl text-black/70 max-w-3xl mx-auto">
+                The principles that guide everything we do at Clasico Barbershop.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up">
+                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-display text-black mb-3">Quality</h3>
+                <p className="text-black/70">
+                  We never compromise on quality. Every cut, every shave, every service is delivered with the highest standards.
+                </p>
+              </div>
+
+              <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up">
+                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-display text-black mb-3">Community</h3>
+                <p className="text-black/70">
+                  We're more than just a barbershop. We're a community hub where friendships are formed and stories are shared.
+                </p>
+              </div>
+
+              <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up">
+                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-display text-black mb-3">Innovation</h3>
+                <p className="text-black/70">
+                  We stay ahead of trends while respecting traditional techniques, offering the best of both worlds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container-custom">
+            <div className="text-center mb-16 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
+                Meet the Team
+              </h2>
+              <p className="text-xl text-black/70 max-w-3xl mx-auto">
+                Our skilled professionals are passionate about their craft and dedicated to providing you with the best grooming experience.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {teamMembers.map((member, index) => (
+                <div
+                  key={member.name}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="relative h-[32rem]">
+                    {imagesLoaded && (
+                      <RobustImage
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="absolute inset-0 w-full h-full object-cover object-top"
+                        loadingStrategy="lazy"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-display text-black mb-2">{member.name}</h3>
+                    <p className="text-gold font-semibold mb-3">{member.role}</p>
+                    <p className="text-black/70">{member.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </>
   );

@@ -14,6 +14,7 @@ import Gallery from '../components/sections/Gallery';
 import dynamic from 'next/dynamic';
 import LoadingState from '../components/ui/LoadingState'
 import { scrollToSection } from '../utils/scroll';
+import RobustImage from '../components/ui/RobustImage';
 
 // Dynamically import the Booking component with no SSR
 const Booking = dynamic(() => import('../components/sections/Booking'), {
@@ -43,10 +44,13 @@ export default function Home() {
       <section className="relative h-screen flex overflow-hidden pt-24 md:pt-32">
         {/* Left Side - Content with Background Image */}
         <div className="w-1/2 relative flex items-center justify-center">
-          <img
-            src="/images/hero/hero-bg.jpeg?v=2"
+          <RobustImage
+            src="/images/hero/hero-bg.jpeg"
             alt="Luxury barbershop interior"
+            fill
             className="absolute inset-0 w-full h-full object-cover"
+            priority
+            loadingStrategy="eager"
           />
           <div className="absolute inset-0 bg-black/50" />
           
@@ -94,17 +98,15 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative w-full max-w-sm"
           >
-            <img
-              src="/images/hero/clasicobrand.jpg?v=2"
+            <RobustImage
+              src="/images/logo.jpg"
               alt="Clasico Barbershop Brand"
+              width={400}
+              height={400}
               className="object-contain w-full h-full max-w-sm"
-              onError={(e) => {
-                console.error('Failed to load hero brand image');
-                e.currentTarget.style.display = 'none';
-              }}
-              onLoad={() => {
-                console.log('Successfully loaded hero brand image');
-              }}
+              priority
+              loadingStrategy="eager"
+              fallbackSrc="/images/logo.jpg"
             />
           </motion.div>
         </div>

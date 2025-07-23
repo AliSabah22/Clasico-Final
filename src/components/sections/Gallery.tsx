@@ -1,15 +1,15 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+import RobustImage from '../ui/RobustImage';
 
 const galleryImages = [
-  '/images/gallery_photos/photo1.jpg?v=2',
-  '/images/gallery_photos/photo2.jpg?v=2',
-  '/images/gallery_photos/photo3.jpg?v=2',
-  '/images/gallery_photos/photo4.jpg?v=2',
-  '/images/gallery_photos/photo5.jpg?v=2',
-  '/images/gallery_photos/photo6.jpg?v=2',
+  '/images/gallery_photos/photo1.jpg',
+  '/images/gallery_photos/photo2.jpg',
+  '/images/gallery_photos/photo3.jpg',
+  '/images/gallery_photos/photo4.jpg',
+  '/images/gallery_photos/photo5.jpg',
+  '/images/gallery_photos/photo6.jpg',
 ];
 
 export default function Gallery() {
@@ -32,17 +32,12 @@ export default function Gallery() {
               className="group relative overflow-hidden rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
             >
               <div className="aspect-square relative">
-                <img
+                <RobustImage
                   src={image}
                   alt={`Barbershop work ${index + 1}`}
+                  fill
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  onError={(e) => {
-                    console.error(`Failed to load gallery image: ${image}`);
-                    e.currentTarget.style.display = 'none';
-                  }}
-                  onLoad={() => {
-                    console.log(`Successfully loaded gallery image: ${image}`);
-                  }}
+                  loadingStrategy="lazy"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white">
