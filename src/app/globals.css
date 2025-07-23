@@ -9,6 +9,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 body {
@@ -16,6 +18,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  @apply bg-black text-white antialiased font-sans;
+  /* Improve touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent zoom on input focus on iOS */
+  touch-action: manipulation;
 }
 
 /* Custom container for better performance */
@@ -23,7 +30,7 @@ body {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Optimized animations */
+/* Animation Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -46,12 +53,77 @@ body {
   }
 }
 
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animation Classes */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
+.animate-fade-in-delay {
+  animation: fadeIn 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
 .animate-slide-in {
   animation: slideIn 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 /* Performance-focused hover effects */
@@ -71,13 +143,14 @@ body {
   animation: loading 1.5s infinite;
 }
 
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+.loading {
+  @apply relative overflow-hidden;
+}
+
+.loading::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+  animation: shimmer 1.5s infinite;
 }
 
 /* Custom scrollbar for better UX */
@@ -85,23 +158,42 @@ body {
   width: 8px;
 }
 
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+}
+
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 4px;
+  @apply bg-gold/60 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+  @apply bg-gold/80;
 }
 
 /* Focus styles for accessibility */
 .focus-visible:focus {
   outline: 2px solid #fbbf24;
   outline-offset: 2px;
+}
+
+*:focus-visible {
+  @apply outline-none ring-2 ring-gold ring-offset-2;
+}
+
+@media (max-width: 768px) {
+  *:focus-visible {
+    @apply ring-offset-1;
+  }
 }
 
 /* Print styles */
@@ -123,6 +215,19 @@ body {
   }
 }
 
+/* Selection Styling */
+::selection {
+  background: #D4AF37;
+  color: white;
+}
+
+/* Custom Cursor for Desktop */
+@media (min-width: 768px) {
+  .custom-cursor {
+    cursor: none;
+  }
+}
+
 @layer base {
   :root {
     --font-sans: var(--font-inter);
@@ -134,20 +239,6 @@ body {
     --opacity-20: 0.2;
     --opacity-30: 0.3;
     --opacity-50: 0.5;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    /* Prevent horizontal scroll on mobile */
-    overflow-x: hidden;
-  }
-
-  body {
-    @apply bg-black text-white antialiased font-sans;
-    /* Improve touch scrolling on mobile */
-    -webkit-overflow-scrolling: touch;
-    /* Prevent zoom on input focus on iOS */
-    touch-action: manipulation;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -171,14 +262,21 @@ body {
     input, textarea, select {
       font-size: 16px; /* Prevents zoom on iOS */
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+      * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.3s !important;
+      }
+    }
+    
+    img {
+      @apply max-w-full h-auto;
+    }
   }
 }
 
 @layer components {
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
   .btn-primary {
     @apply bg-gold text-white px-4 sm:px-6 py-3 md:py-3 rounded-md font-medium transition-all duration-300 hover:bg-gold/80 shadow-lg hover:shadow-xl touch-manipulation;
     /* Ensure minimum touch target size */
@@ -329,224 +427,27 @@ body {
     @apply mt-4 sm:mt-6 md:mt-8;
   }
 
-  /* Essential animations only */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-    transform: translateY(0);
-  }
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-  .animate-fade-in-delay {
-    animation: fadeIn 0.6s ease-out 0.2s forwards;
-    opacity: 0;
-}
-
-  /* Smooth scrolling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-@media (min-width: 768px) {
-  ::-webkit-scrollbar {
-      width: 12px;
-  }
-}
-
-::-webkit-scrollbar-track {
-    @apply bg-gray-100;
-}
-
-::-webkit-scrollbar-thumb {
-    @apply bg-gold/60 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold/80;
-}
-
-  /* Focus styles */
-*:focus-visible {
-    @apply outline-none ring-2 ring-gold ring-offset-2;
-}
-
-@media (max-width: 768px) {
-  *:focus-visible {
-    @apply ring-offset-1;
-  }
-}
-
-  /* Loading states */
-.loading {
-  @apply relative overflow-hidden;
-}
-
-.loading::after {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-  /* Mobile optimizations */
-@media (max-width: 768px) {
-  @media (prefers-reduced-motion: no-preference) {
-    * {
-        animation-duration: 0.3s !important;
-      transition-duration: 0.3s !important;
-    }
-  }
-  
-    img {
-      @apply max-w-full h-auto;
-    }
+  /* Mobile-specific animations */
+  .mobile-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
   }
 
   /* Safe areas for mobile */
-@supports (padding: max(0px)) {
-  .mobile-safe-top {
-    padding-top: max(1rem, env(safe-area-inset-top));
+  @supports (padding: max(0px)) {
+    .mobile-safe-top {
+      padding-top: max(1rem, env(safe-area-inset-top));
+    }
+    
+    .mobile-safe-bottom {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+    
+    .mobile-safe-left {
+      padding-left: max(1rem, env(safe-area-inset-left));
+    }
+    
+    .mobile-safe-right {
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
   }
-  
-  .mobile-safe-bottom {
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
-  
-  .mobile-safe-left {
-    padding-left: max(1rem, env(safe-area-inset-left));
-  }
-  
-  .mobile-safe-right {
-    padding-right: max(1rem, env(safe-area-inset-right));
-  }
-  }
-}
-
-/* Animation Keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-  }
-}
-
-/* Animation Classes */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-.animate-fade-up {
-  animation: fadeUp 0.5s ease-out forwards;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.5s ease-out forwards;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.3s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* Selection Styling */
-::selection {
-  background: #D4AF37;
-  color: white;
-}
-
-/* Custom Cursor for Desktop */
-@media (min-width: 768px) {
-  .custom-cursor {
-    cursor: none;
-  }
-}
-
-/* Mobile-specific animations */
-@keyframes mobile-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.mobile-fade-in {
-  animation: mobile-fade-in 0.4s ease-out forwards;
 }
