@@ -53,28 +53,23 @@ export default function SignatureExperience() {
             </button>
           </div>
 
-          {/* Right Content - Video/Image */}
+          {/* Right Content - Video */}
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxury">
-            <img
-              src="/images/signature-experience.jpeg"
-              alt="Signature barbershop experience"
+            <video
+              src="/videos/SnapInsta.to_AQOVHeYXmQq72QwElZUP89moEG0JSycQkVIXcR0KRpEPx-4EvvyuPsF50QjZ9-Grd5VXOeIIWpSiYEa-TDEyamAG.mp4"
               className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              autoPlay
+              muted
+              loop
+              playsInline
               onError={(e) => {
-                console.error('Failed to load signature experience image');
-                e.currentTarget.style.display = 'none';
+                console.error('Failed to load signature experience video');
               }}
               onLoad={() => {
-                console.log('Successfully loaded signature experience image');
+                console.log('Successfully loaded signature experience video');
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                <span className="text-primary text-2xl">▶</span>
-              </button>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </div>
         </div>
       </div>
