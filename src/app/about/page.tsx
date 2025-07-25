@@ -35,6 +35,12 @@ export default function AboutPage() {
       image: "/team/humam.jpeg",
       bio: "Humam is our go-to expert for beard grooming and straight razor shaves.",
     },
+    {
+      name: "Akram",
+      role: "Senior Barber",
+      image: "/team/akram.jpeg",
+      bio: "Akram brings years of expertise in modern styling and precision cutting techniques.",
+    },
   ];
 
   return (
