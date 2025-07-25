@@ -1,8 +1,41 @@
 "use client";
 
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 export default function SignatureExperience() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const loadingRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const loading = loadingRef.current;
+    
+    if (video && loading) {
+      const handleCanPlay = () => {
+        loading.style.display = 'none';
+      };
+      
+      const handleError = () => {
+        loading.innerHTML = `
+          <div class="text-center text-white">
+            <div class="text-4xl mb-4">❌</div>
+            <p class="text-lg">Video failed to load</p>
+            <p class="text-sm text-gray-400 mt-2">Please refresh the page</p>
+          </div>
+        `;
+      };
+      
+      video.addEventListener('canplay', handleCanPlay);
+      video.addEventListener('error', handleError);
+      
+      return () => {
+        video.removeEventListener('canplay', handleCanPlay);
+        video.removeEventListener('error', handleError);
+      };
+    }
+  }, []);
+
   const features = [
     "Premium grooming products",
     "Complimentary refreshments",
@@ -54,22 +87,38 @@ export default function SignatureExperience() {
           </div>
 
           {/* Right Content - Video */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxury">
+          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxury bg-black">
             <video
-              src="/videos/SnapInsta.to_AQOVHeYXmQq72QwElZUP89moEG0JSycQkVIXcR0KRpEPx-4EvvyuPsF50QjZ9-Grd5VXOeIIWpSiYEa-TDEyamAG.mp4"
+              ref={videoRef}
+              src="/videos/signature-experience.mp4"
               className="absolute inset-0 w-full h-full object-cover rounded-2xl"
               autoPlay
               muted
               loop
               playsInline
+              controls
               onError={(e) => {
-                console.error('Failed to load signature experience video');
+                console.error('Failed to load signature experience video:', e);
               }}
-              onLoad={() => {
-                console.log('Successfully loaded signature experience video');
+              onLoadStart={() => {
+                console.log('Video loading started');
+              }}
+              onCanPlay={() => {
+                console.log('Video can play');
+              }}
+              onPlay={() => {
+                console.log('Video started playing');
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            
+            {/* Loading indicator */}
+            <div ref={loadingRef} className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl">
+              <div className="text-center text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold mx-auto mb-4"></div>
+                <p className="text-sm">Loading video...</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
