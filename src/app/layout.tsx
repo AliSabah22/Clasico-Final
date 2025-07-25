@@ -28,6 +28,34 @@ export default function RootLayout({
             gtag('config', 'AW-11551450864');
           `}
         </Script>
+        {/* LocalBusiness Structured Data */}
+        <Script
+          id="local-business-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Barbershop",
+              "name": "Clasico Barbershop",
+              "image": "https://clasicobarber.com/images/og-image.jpg",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "3480 Platinum Dr Unit 105",
+                "addressLocality": "Mississauga",
+                "addressRegion": "ON",
+                "postalCode": "L5M 2S4",
+                "addressCountry": "CA"
+              },
+              "telephone": "+1-647-559-4641",
+              "url": "https://clasicobarber.com",
+              "sameAs": [
+                "https://www.instagram.com/clasicobarbershop105/",
+                "https://www.google.com/maps/place/Clasico+Barbershop"
+              ],
+              "openingHours": "Mo-Su 10:00-22:00"
+            })
+          }}
+        />
       </head>
       <body>
         <ImagePreloader />
