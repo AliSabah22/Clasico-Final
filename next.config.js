@@ -17,12 +17,15 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Enable image optimization for better performance
+    // Enable Vercel's automatic image optimization
     unoptimized: false,
     // Add quality settings
     quality: 85,
     // Enable progressive loading
     loading: 'lazy',
+    // Vercel-specific optimizations
+    domains: [],
+    remotePatterns: [],
   },
 
   // Experimental features for performance
@@ -33,6 +36,15 @@ const nextConfig = {
     bundlePagesExternals: false,
     // Enable modern image formats
     modern: true,
+    // Vercel optimizations
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
 
   // Webpack optimizations
@@ -75,7 +87,7 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Headers for performance
+  // Headers for performance - Vercel compatible
   async headers() {
     return [
       {
@@ -142,6 +154,16 @@ const nextConfig = {
             value: 'public, max-age=31536000, immutable',
           },
         ],
+      },
+    ];
+  },
+
+  // Vercel-specific optimizations
+  async rewrites() {
+    return [
+      {
+        source: '/api/optimize/:path*',
+        destination: '/api/optimize/:path*',
       },
     ];
   },

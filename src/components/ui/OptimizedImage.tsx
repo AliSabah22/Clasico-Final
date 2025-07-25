@@ -92,6 +92,11 @@ export default function OptimizedImage({
         onLoad={handleLoad}
         onError={handleError}
         loading={priority ? 'eager' : 'lazy'}
+        // Vercel optimizations
+        unoptimized={false}
+        style={{
+          objectFit: 'cover',
+        }}
       />
     </div>
   );
