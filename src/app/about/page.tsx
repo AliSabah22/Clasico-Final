@@ -41,27 +41,6 @@ export default function AboutPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
-          <RobustImage
-            src="/images/hero/hero-bg.jpeg"
-            alt="About Clasico Barbershop"
-            fill
-            className="absolute inset-0 w-full h-full object-cover"
-            priority
-            loadingStrategy="eager"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="container-custom relative z-10 text-center">
-            <h1 className="text-4xl md:text-6xl font-display text-white mb-4 animate-fade-in">
-              About Us
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto animate-fade-in-delay">
-              Discover the story, values, and people behind Clasico Barbershop.
-            </p>
-          </div>
-        </section>
-
         {/* About the Shop Section */}
         <section className="py-20 bg-white">
           <div className="container-custom">
