@@ -90,15 +90,18 @@ export default function ServicesPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden -mt-20">
-        <Image
-          src="/images/services/service2.jpg"
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
+        <img
+          src="/images/hero/hero-bg.jpeg"
           alt="Clasico Barbershop Services"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            console.error('Failed to load services hero image');
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoad={() => {
+            console.log('Successfully loaded services hero image');
+          }}
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="container-custom relative z-10 text-center">

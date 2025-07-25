@@ -14,6 +14,7 @@ import Gallery from '../components/sections/Gallery';
 import dynamic from 'next/dynamic';
 import LoadingState from '../components/ui/LoadingState'
 import { scrollToSection } from '../utils/scroll';
+import RobustImage from '../components/ui/RobustImage';
 
 // Dynamically import the Booking component with no SSR
 const Booking = dynamic(() => import('../components/sections/Booking'), {
@@ -40,53 +41,54 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex overflow-hidden -mt-20">
-        {/* Left Side - Content with Background Image */}
-        <div className="w-1/2 relative flex items-center justify-center">
-          <Image
-            src="/images/hero-bg.jpg"
+      <section className="relative h-screen flex overflow-hidden pt-24 md:pt-32">
+        {/* Left Side - Background Image with Overlay Content */}
+        <div className="w-1/2 relative">
+          <RobustImage
+            src="/images/hero/hero-bg.jpeg"
             alt="Luxury barbershop interior"
             fill
-            className="object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
             priority
-            quality={90}
-            sizes="50vw"
+            loadingStrategy="eager"
           />
           <div className="absolute inset-0 bg-black/50" />
           
-          <div className="text-left px-12 max-w-lg relative z-10">
-            <motion.h1
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-display text-white mb-6 font-bold"
-            >
-              Redefine Your Look
-            </motion.h1>
-            
-            <motion.p
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-white/90 mb-10"
-            >
-              Where precision meets luxury. Experience the art of grooming in its purest form.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <button 
-                onClick={handleBookNow}
-                className="btn-primary text-xl px-10 py-4"
+          <div className="absolute inset-0 flex items-center justify-start px-12">
+            <div className="text-left max-w-lg relative z-10">
+              <motion.h1
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-display text-white mb-6 font-bold"
               >
-                Book Your Appointment
-              </button>
-            </motion.div>
+                Redefine Your Look
+              </motion.h1>
+              
+              <motion.p
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl md:text-2xl text-white/90 mb-10"
+              >
+                Where precision meets luxury. Experience the art of grooming in its purest form.
+              </motion.p>
+
+              <motion.div
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <button 
+                  onClick={handleBookNow}
+                  className="btn-primary text-xl px-10 py-4"
+                >
+                  Book Your Appointment
+                </button>
+              </motion.div>
+            </div>
           </div>
         </div>
 
@@ -98,13 +100,15 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative w-full max-w-sm"
           >
-            <Image
-              src="/images/hero/Clasico brand.png"
+            <RobustImage
+              src="/images/hero/clasicobrand.jpg"
               alt="Clasico Barbershop Brand"
               width={400}
               height={400}
-              className="object-contain"
+              className="object-contain w-full h-full max-w-sm"
               priority
+              loadingStrategy="eager"
+              fallbackSrc="/images/hero/clasicobrand.jpg"
             />
           </motion.div>
         </div>
@@ -137,6 +141,7 @@ export default function Home() {
       <Testimonials />
       <Gallery />
       <Booking />
+      <Footer />
     </>
   );
 }

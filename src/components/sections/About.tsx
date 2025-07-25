@@ -5,22 +5,22 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "John Smith",
+    name: "Nemar",
     role: "Master Barber",
-    image: "/images/barber1.jpg",
-    bio: "With over 15 years of experience, John specializes in classic cuts and modern fades.",
+    image: "/team/nemar.jpeg?v=2",
+    bio: "With over 8 years of experience, Nemar specializes in classic cuts and modern fades.",
   },
   {
-    name: "Mike Johnson",
+    name: "Ali",
     role: "Senior Stylist",
-    image: "/images/barber2.jpg",
-    bio: "Mike brings creativity and precision to every cut, with expertise in contemporary styles.",
+    image: "/team/ali.jpeg?v=2",
+    bio: "Ali brings creativity and precision to every cut, with expertise in contemporary styles.",
   },
   {
-    name: "David Wilson",
+    name: "Humam",
     role: "Beard Specialist",
-    image: "/images/barber3.jpg",
-    bio: "David is our go-to expert for beard grooming and straight razor shaves.",
+    image: "/team/humam.jpeg?v=2",
+    bio: "Humam is our go-to expert for beard grooming and straight razor shaves.",
   },
 ];
 
@@ -50,11 +50,17 @@ export default function About() {
               className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 transition-colors duration-300"
             >
               <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image
+                <img
                   src={member.image}
                   alt={member.name}
-                  fill
-                  className="object-cover"
+                  className="absolute inset-0 w-full h-full object-cover rounded-full"
+                  onError={(e) => {
+                    console.error(`Failed to load team member image: ${member.image}`);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={() => {
+                    console.log(`Successfully loaded team member image: ${member.image}`);
+                  }}
                 />
               </div>
               <h3 className="text-xl font-display text-white mb-2">{member.name}</h3>

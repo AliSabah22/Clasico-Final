@@ -58,7 +58,11 @@ export default function VercelImage({
         fill={fill}
         sizes={sizes}
         quality={quality}
-        unoptimized={false}
+        unoptimized={true}
+        style={{
+          objectFit: 'contain',
+          objectPosition: 'center',
+        }}
       />
     </div>
   );

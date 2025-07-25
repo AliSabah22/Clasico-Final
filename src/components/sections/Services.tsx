@@ -19,7 +19,7 @@ export default function Services() {
       duration: "45 min",
       luxury: "Standard",
       features: ["3 Haircuts", "3 Beard Trim Line-up (Machine)", "Valid for 3 months only", "Minimum time for haircut is 45 minutes"],
-      image: "/images/packages/silver.png"
+      image: "/images/packages/silver.png?v=2"
     },
     {
       name: "Gold Experience",
@@ -28,7 +28,7 @@ export default function Services() {
       duration: "45 min",
       luxury: "Premium",
       features: ["3 Haircuts", "3 Beard Trim Line-up (Blade/Shaver)", "Valid for 3 months only", "Minimum time for haircut is 45 minutes"],
-      image: "/images/packages/gold.png"
+      image: "/images/packages/gold.png?v=2"
     },
     {
       name: "Platinum Experience",
@@ -37,17 +37,17 @@ export default function Services() {
       duration: "45 min",
       luxury: "Luxury",
       features: ["6 Haircuts", "6 Beard Trim Line-up (Blade/Shaver)", "Valid for 6 months only", "Minimum time for haircut is 45 minutes"],
-      image: "/images/packages/platinum.png"
+      image: "/images/packages/platinum.png?v=2"
     }
   ];
 
   const additionalServices = [
-    { name: "Beard Sculpting", price: "$35", duration: "30 min" },
-    { name: "Hot Towel Shave", price: "$40", duration: "45 min" },
-    { name: "Scalp Treatment", price: "$25", duration: "20 min" },
-    { name: "Hair Coloring", price: "$60", duration: "90 min" },
-    { name: "Style Consultation", price: "$20", duration: "15 min" },
-    { name: "Product Application", price: "$15", duration: "10 min" },
+    { name: "Haircut & beard trim", price: "$45.00", duration: "45 min" },
+    { name: "Scissor cut", price: "$33.25", duration: "45 min" },
+    { name: "Full face wax or threading", price: "$30.00", duration: "30 min" },
+    { name: "Hair styling", price: "$15.00", duration: "20 min" },
+    { name: "Facial (steam, hot towel, black mask and more)", price: "$55.00", duration: "60 min" },
+    { name: "Shampoo & wash", price: "$5.00", duration: "10 min" },
   ];
 
   return (

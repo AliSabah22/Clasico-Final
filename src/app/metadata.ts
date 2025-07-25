@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'Clasico Barbershop',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/og-image.jpg?v=2',
         width: 1200,
         height: 630,
         alt: 'Clasico Barbershop - Luxury Men\'s Grooming',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Clasico Barbershop | Luxury Men\'s Grooming',
     description: 'Experience premium grooming services at Clásico Barbershop. Our expert barbers provide luxury haircuts, beard trims, and grooming services in a sophisticated atmosphere.',
-    images: ['/images/twitter-image.jpg'],
+    images: ['/images/twitter-image.jpg?v=2'],
     creator: '@clasicobarbershop',
   },
   robots: {

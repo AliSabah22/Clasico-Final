@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
 
 const packages = [
   {
@@ -9,7 +8,7 @@ const packages = [
     description: "Essential grooming services for the modern man",
     price: "$45",
     features: ["Classic Haircut", "Beard Trim", "Hot Towel Treatment"],
-    logo: "/images/packages/silver.png",
+    logo: "/images/packages/silver.png?v=2",
     popular: false
   },
   {
@@ -17,7 +16,7 @@ const packages = [
     description: "Premium grooming experience with luxury touches",
     price: "$75",
     features: ["Premium Haircut", "Beard Styling", "Hot Towel Treatment", "Signature Aftershave"],
-    logo: "/images/packages/gold.png",
+    logo: "/images/packages/gold.png?v=2",
     popular: true
   },
   {
@@ -25,7 +24,7 @@ const packages = [
     description: "Ultimate grooming experience with exclusive services",
     price: "$120",
     features: ["Luxury Haircut", "Beard Sculpting", "Hot Towel Treatment", "Signature Aftershave", "Private Consultation"],
-    logo: "/images/packages/platinum.png",
+    logo: "/images/packages/platinum.png?v=2",
     popular: false
   }
 ];
@@ -63,14 +62,20 @@ export default function Packages() {
                 </div>
               )}
 
-              {/* Package Logo - Positioned above package name */}
+              {/* Package Logo - Using regular img tag for testing */}
               <div className="flex justify-center mb-6">
-                <div className="relative w-24 h-24">
-                  <Image
+                <div className="relative w-24 h-24 bg-gray-50 rounded-lg overflow-hidden flex items-center justify-center">
+                  <img
                     src={pkg.logo}
                     alt={`${pkg.name} logo`}
-                    fill
-                    className="object-contain"
+                    className="object-contain w-full h-full"
+                    onError={(e) => {
+                      console.error(`Failed to load image: ${pkg.logo}`);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log(`Successfully loaded image: ${pkg.logo}`);
+                    }}
                   />
                 </div>
               </div>

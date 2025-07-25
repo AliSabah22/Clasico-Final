@@ -1,39 +1,15 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+import RobustImage from '../ui/RobustImage';
 
 const galleryImages = [
-  {
-    src: '/images/gallary_photos/DSC03191.jpg',
-    alt: 'Barbershop work 1',
-    title: 'Classic Cut'
-  },
-  {
-    src: '/images/gallary_photos/DSC03992.jpg',
-    alt: 'Barbershop work 2',
-    title: 'Modern Style'
-  },
-  {
-    src: '/images/gallary_photos/469224525_17889610338110577_2569995278072668272_n.jpg',
-    alt: 'Barbershop work 3',
-    title: 'Premium Service'
-  },
-  {
-    src: '/images/gallary_photos/474389932_17895039927110577_1959066183506360602_n.jpg',
-    alt: 'Barbershop work 4',
-    title: 'Expert Craftsmanship'
-  },
-  {
-    src: '/images/gallary_photos/491445309_17906499714110577_8094427299739655103_n.jpeg',
-    alt: 'Barbershop work 5',
-    title: 'Luxury Experience'
-  },
-  {
-    src: '/images/gallary_photos/496139148_17908424976110577_6263820544994684137_n.jpeg',
-    alt: 'Barbershop work 6',
-    title: 'Professional Finish'
-  }
+  '/images/gallery_photos/photo1.jpg',
+  '/images/gallery_photos/photo2.jpg',
+  '/images/gallery_photos/photo3.jpg',
+  '/images/gallery_photos/photo4.jpg',
+  '/images/gallery_photos/photo5.jpg',
+  '/images/gallery_photos/photo6.jpg',
 ];
 
 export default function Gallery() {
@@ -56,16 +32,16 @@ export default function Gallery() {
               className="group relative overflow-hidden rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
             >
               <div className="aspect-square relative">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
+                <RobustImage
+                  src={image}
+                  alt={`Barbershop work ${index + 1}`}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loadingStrategy="lazy"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white">
-                    <h3 className="text-xl font-semibold mb-2">{image.title}</h3>
+                    <h3 className="text-xl font-semibold mb-2">Classic Cut</h3>
                     <p className="text-sm text-white/80">Premium Quality</p>
                   </div>
                 </div>

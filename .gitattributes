@@ -13,10 +13,7 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 # Binary files
-*.png filter=lfs diff=lfs merge=lfs -text
 public/images/packages/*.png -filter=lfs -diff=lfs -merge=lfs -text
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.jpeg filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.ico binary
 *.svg filter=lfs diff=lfs merge=lfs -text
