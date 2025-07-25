@@ -17,8 +17,12 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Disable image optimization completely for debugging
-    unoptimized: true,
+    // Enable image optimization for better performance
+    unoptimized: false,
+    // Add quality settings
+    quality: 85,
+    // Enable progressive loading
+    loading: 'lazy',
   },
 
   // Experimental features for performance
@@ -27,6 +31,8 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react'],
     // Reduce bundle analysis
     bundlePagesExternals: false,
+    // Enable modern image formats
+    modern: true,
   },
 
   // Webpack optimizations
@@ -48,6 +54,17 @@ const nextConfig = {
       // Enable tree shaking
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
+      // Enable code splitting
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      };
     }
 
     return config;
@@ -80,6 +97,45 @@ const nextConfig = {
       },
       {
         source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Encoding',
+            value: 'gzip, deflate, br',
+          },
+        ],
+      },
+      {
+        source: '/videos/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+          {
+            key: 'Content-Type',
+            value: 'video/mp4',
+          },
+        ],
+      },
+      {
+        source: '/team/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/icons/(.*)',
         headers: [
           {
             key: 'Cache-Control',

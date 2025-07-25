@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import OptimizedVideo from './ui/OptimizedVideo';
 
 export default function SignatureExperience() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -88,8 +89,7 @@ export default function SignatureExperience() {
 
           {/* Right Content - Video */}
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxury bg-black">
-            <video
-              ref={videoRef}
+            <OptimizedVideo
               src="/videos/signature-experience.mp4"
               className="absolute inset-0 w-full h-full object-cover rounded-2xl"
               autoPlay
@@ -97,14 +97,12 @@ export default function SignatureExperience() {
               loop
               playsInline
               controls
-              onError={(e) => {
-                console.error('Failed to load signature experience video:', e);
+              preload="metadata"
+              onLoad={() => {
+                console.log('Video loaded successfully');
               }}
-              onLoadStart={() => {
-                console.log('Video loading started');
-              }}
-              onCanPlay={() => {
-                console.log('Video can play');
+              onError={() => {
+                console.error('Failed to load signature experience video');
               }}
               onPlay={() => {
                 console.log('Video started playing');
