@@ -6,34 +6,30 @@ import Image from 'next/image';
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
-  fill?: boolean;
   className?: string;
   priority?: boolean;
+  fill?: boolean;
   sizes?: string;
-  quality?: number;
   placeholder?: 'blur' | 'empty';
   blurDataURL?: string;
   onLoad?: () => void;
   onError?: () => void;
+  loading?: 'lazy' | 'eager';
 }
 
-export default function OptimizedImage({
+const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
-  width,
-  height,
-  fill = false,
   className = '',
   priority = false,
-  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-  quality = 85,
-  placeholder = 'empty',
+  fill = false,
+  sizes = '100vw',
+  placeholder = 'blur',
   blurDataURL,
   onLoad,
   onError,
-}: OptimizedImageProps) {
+  loading = 'lazy',
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -48,23 +44,20 @@ export default function OptimizedImage({
     onError?.();
   };
 
-  // Preload critical images
+  // Preload priority images
   useEffect(() => {
-    if (priority) {
-      const img = new Image();
+    if (priority && typeof window !== 'undefined') {
+      const img = document.createElement('img');
       img.src = src;
       img.onload = handleLoad;
       img.onerror = handleError;
     }
-  }, [src, priority]);
+  }, [priority, src]);
 
   if (hasError) {
     return (
-      <div className={`bg-gray-200 flex items-center justify-center ${className}`}>
-        <div className="text-center text-gray-500">
-          <div className="text-2xl mb-2">🖼️</div>
-          <p className="text-sm">Image not available</p>
-        </div>
+      <div className={`${className} bg-gray-200 flex items-center justify-center`}>
+        <div className="text-gray-500 text-sm">Failed to load image</div>
       </div>
     );
   }
@@ -72,30 +65,25 @@ export default function OptimizedImage({
   return (
     <div className={`relative ${className}`}>
       {isLoading && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-          <div className="text-gray-400">Loading...</div>
-        </div>
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
       )}
-      
       <Image
         src={src}
         alt={alt}
-        width={width}
-        height={height}
         fill={fill}
-        className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-        priority={priority}
         sizes={sizes}
-        quality={quality}
         placeholder={placeholder}
         blurDataURL={blurDataURL}
         onLoad={handleLoad}
         onError={handleError}
-        loading={priority ? 'eager' : 'lazy'}
-        style={{
-          objectFit: 'cover',
-        }}
+        loading={loading}
+        priority={priority}
+        className={`transition-opacity duration-300 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
       />
     </div>
   );
-} 
+};
+
+export default OptimizedImage; 
