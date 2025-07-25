@@ -99,14 +99,14 @@ export default function Home() {
             className="relative w-full max-w-sm"
           >
             <RobustImage
-              src="/images/logo.jpg"
+              src="/images/hero/clasicobrand.jpg"
               alt="Clasico Barbershop Brand"
               width={400}
               height={400}
               className="object-contain w-full h-full max-w-sm"
               priority
               loadingStrategy="eager"
-              fallbackSrc="/images/logo.jpg"
+              fallbackSrc="/images/hero/clasicobrand.jpg"
             />
           </motion.div>
         </div>

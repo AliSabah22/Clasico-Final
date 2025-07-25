@@ -12,7 +12,6 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Left Side - Background Image with Content Overlay */}
       <div className="w-full lg:w-1/2 relative">
-        {/* Background Image */}
         <img
           src="/images/hero/hero-bg.jpeg?v=2"
           alt="Clasico Barbershop interior"
@@ -25,10 +24,7 @@ export default function Hero() {
             console.log('Successfully loaded hero left side image');
           }}
         />
-        {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/50" />
-        
-        {/* Content */}
         <div className="relative z-10 p-8 lg:p-16 flex items-center justify-center h-full">
           <div className="max-w-lg text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight">
