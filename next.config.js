@@ -19,10 +19,6 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     // Enable Vercel's automatic image optimization
     unoptimized: false,
-    // Add quality settings
-    quality: 85,
-    // Enable progressive loading
-    loading: 'lazy',
     // Vercel-specific optimizations
     domains: [],
     remotePatterns: [],
@@ -34,8 +30,6 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react'],
     // Reduce bundle analysis
     bundlePagesExternals: false,
-    // Enable modern image formats
-    modern: true,
     // Vercel optimizations
     turbo: {
       rules: {
