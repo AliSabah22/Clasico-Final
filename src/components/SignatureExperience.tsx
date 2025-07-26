@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { openCojilioBooking } from '../utils/cojilio';
 
 export default function SignatureExperience() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -46,7 +47,7 @@ export default function SignatureExperience() {
   ];
 
   const handleBookExperience = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (

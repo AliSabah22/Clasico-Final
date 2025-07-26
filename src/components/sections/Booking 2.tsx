@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { openCojilioBooking } from '../../utils/cojilio';
 
 export default function Booking() {
   const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (

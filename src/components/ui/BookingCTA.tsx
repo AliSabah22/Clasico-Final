@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { openCojilioBooking } from '../../utils/cojilio';
 
 export default function BookingCTA() {
   return (
@@ -13,7 +14,7 @@ export default function BookingCTA() {
         Your perfect haircut is just a click away.
       </p>
       <button 
-        onClick={() => window.open('https://booking.cojilio.com/clasicobarbershop', '_blank')}
+        onClick={openCojilioBooking}
         className="bg-black text-white hover:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl touch-manipulation"
       >
         Book Now

@@ -1,6 +1,7 @@
 "use client";
 
 import OptimizedImage from '../ui/OptimizedImage';
+import { openCojilioBooking } from '../../utils/cojilio';
 
 const testimonials = [
   {
@@ -69,7 +70,7 @@ export default function Testimonials() {
               Join our satisfied clients and discover the Clasico difference
             </p>
             <button 
-              onClick={() => window.open('https://booking.cojilio.com/clasicobarbershop', '_blank')}
+              onClick={openCojilioBooking}
               className="btn-primary w-full sm:w-auto touch-manipulation"
             >
               Book Your Appointment

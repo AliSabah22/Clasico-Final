@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { openCojilioBooking } from '../utils/cojilio';
 
 const packages = [
   {
@@ -31,7 +32,7 @@ const packages = [
 
 export default function Packages() {
   const handleBookPackage = (packageName: string) => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (

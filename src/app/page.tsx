@@ -14,6 +14,7 @@ import Gallery from '../components/sections/Gallery';
 import dynamic from 'next/dynamic';
 import LoadingState from '../components/ui/LoadingState'
 import { scrollToSection } from '../utils/scroll';
+import { openCojilioBooking } from '../utils/cojilio';
 import RobustImage from '../components/ui/RobustImage';
 
 // Dynamically import the Booking component with no SSR
@@ -33,7 +34,7 @@ const fadeInUp = {
 
 export default function Home() {
   const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (

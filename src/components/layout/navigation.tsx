@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { openCojilioBooking } from '../../../utils/cojilio';
 
 interface NavigationItem {
   name: string;
@@ -19,7 +20,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (

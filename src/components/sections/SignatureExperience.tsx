@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import { openCojilioBooking } from '../../utils/cojilio';
 
 const experiences = [
   {
@@ -93,7 +94,7 @@ export default function SignatureExperience() {
                 
                 {/* CTA Button */}
                 <button 
-                  onClick={() => window.open('https://booking.cojilio.com/clasicobarbershop', '_blank')}
+                  onClick={openCojilioBooking}
                   className="w-full mt-6 bg-gold text-black py-3 px-6 rounded-xl font-semibold hover:bg-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
                   Book Now

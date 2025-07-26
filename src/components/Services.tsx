@@ -1,5 +1,7 @@
 "use client";
 
+import { openCojilioBooking } from '../utils/cojilio';
+
 const services = [
   {
     title: "Classic Cut",
@@ -35,7 +37,7 @@ const services = [
 
 export default function Services() {
   const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (

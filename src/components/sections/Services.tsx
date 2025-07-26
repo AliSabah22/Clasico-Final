@@ -3,12 +3,13 @@
 import { useRef } from 'react';
 import OptimizedImage from '../ui/OptimizedImage';
 import BookingCTA from '../ui/BookingCTA';
+import { openCojilioBooking } from '../../utils/cojilio';
 
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   const services = [

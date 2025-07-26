@@ -2,10 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { openCojilioBooking } from '../../utils/cojilio';
  
 export default function Hero() {
   const handleBookNow = () => {
-    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+    openCojilioBooking();
   };
 
   return (
