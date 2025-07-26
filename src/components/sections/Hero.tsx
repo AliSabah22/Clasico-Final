@@ -37,16 +37,16 @@ export default function Hero() {
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={handleBookNow}
-                  className="w-full sm:w-auto bg-gold text-black px-8 py-4 text-lg rounded-md font-medium hover:bg-gold/80 transition-all duration-300 inline-block shadow-lg hover:shadow-xl"
-                >
-                  Book Your Appointment
-                </button>
-                <button
                   onClick={callBarbershop}
                   className="w-full sm:w-auto bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 text-lg rounded-md font-medium hover:bg-white/30 transition-all duration-300 inline-block shadow-lg hover:shadow-xl"
                 >
                   📞 Call Now
+                </button>
+                <button
+                  onClick={handleBookNow}
+                  className="w-full sm:w-auto bg-gold text-black px-8 py-4 text-lg rounded-md font-medium hover:bg-gold/80 transition-all duration-300 inline-block shadow-lg hover:shadow-xl"
+                >
+                  Book Your Appointment
                 </button>
               </div>
               <div className="text-white/70 text-sm">
