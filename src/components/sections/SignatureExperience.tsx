@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { openCojilioBooking } from '../../utils/cojilio';
+import { openCojilioBooking, callBarbershop } from '../../utils/cojilio';
 
 const experiences = [
   {
@@ -92,13 +92,21 @@ export default function SignatureExperience() {
                   </span>
                 </div>
                 
-                {/* CTA Button */}
-                <button 
-                  onClick={openCojilioBooking}
-                  className="w-full mt-6 bg-gold text-black py-3 px-6 rounded-xl font-semibold hover:bg-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                >
-                  Book Now
-                </button>
+                {/* CTA Buttons */}
+                <div className="flex flex-col gap-3 mt-6">
+                  <button 
+                    onClick={openCojilioBooking}
+                    className="w-full bg-gold text-black py-3 px-6 rounded-xl font-semibold hover:bg-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    Book Now
+                  </button>
+                  <button 
+                    onClick={callBarbershop}
+                    className="w-full bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 py-3 px-6 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    📞 Call Now
+                  </button>
+                </div>
               </div>
             </div>
           ))}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { openCojilioBooking } from '../../utils/cojilio';
+import { openCojilioBooking, callBarbershop } from '../../utils/cojilio';
 
 interface NavigationItem {
   name: string;
@@ -128,6 +128,13 @@ const Navigation = () => {
                   className="mt-4 rounded-md bg-gold px-4 py-2 text-sm font-medium text-black hover:bg-gold/90"
                 >
                   Book Now
+                </button>
+                <button 
+                  type="button"
+                  onClick={callBarbershop}
+                  className="mt-2 rounded-md bg-white/20 backdrop-blur-sm text-black border border-black/20 px-4 py-2 text-sm font-medium hover:bg-white/30"
+                >
+                  📞 Call Now
                 </button>
               </div>
             </div>

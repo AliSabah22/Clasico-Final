@@ -16,6 +16,7 @@ import LoadingState from '../components/ui/LoadingState'
 import { scrollToSection } from '../utils/scroll';
 import { openCojilioBooking } from '../utils/cojilio';
 import RobustImage from '../components/ui/RobustImage';
+import FloatingCallButton from '../components/ui/FloatingCallButton';
 
 // Dynamically import the Booking component with no SSR
 const Booking = dynamic(() => import('../components/sections/Booking'), {
@@ -143,6 +144,7 @@ export default function Home() {
       <Gallery />
       <Booking />
       <Footer />
+      <FloatingCallButton />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { openCojilioBooking } from '../../utils/cojilio';
+import { openCojilioBooking, callBarbershop } from '../../utils/cojilio';
 
 export default function BookingCTA() {
   return (
@@ -11,14 +11,22 @@ export default function BookingCTA() {
       </h3>
       <p className="text-black/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
         Book your appointment today and experience the Clasico difference. 
-        Your perfect haircut is just a click away.
+        Your perfect haircut is just a click or call away.
       </p>
-      <button 
-        onClick={openCojilioBooking}
-        className="bg-black text-white hover:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl touch-manipulation"
-      >
-        Book Now
-      </button>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <button 
+          onClick={openCojilioBooking}
+          className="bg-black text-white hover:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl touch-manipulation"
+        >
+          Book Now
+        </button>
+        <button 
+          onClick={callBarbershop}
+          className="bg-white/20 backdrop-blur-sm text-black border-2 border-black/20 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl touch-manipulation hover:bg-white/30"
+        >
+          📞 Call Now
+        </button>
+      </div>
     </div>
   );
 } 

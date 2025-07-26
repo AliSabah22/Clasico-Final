@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { openCojilioBooking } from '../../utils/cojilio';
+import { openCojilioBooking, callBarbershop } from '../../utils/cojilio';
  
 export default function Hero() {
   const handleBookNow = () => {
@@ -35,12 +35,20 @@ export default function Hero() {
               Experience the art of traditional barbering in a modern setting. Where style meets legacy.
             </p>
             <div className="space-y-4">
-              <button
-                onClick={handleBookNow}
-                className="w-full lg:w-auto bg-gold text-black px-8 py-4 text-lg rounded-md font-medium hover:bg-gold/80 transition-all duration-300 inline-block shadow-lg hover:shadow-xl"
-              >
-                Book Your Appointment
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={handleBookNow}
+                  className="w-full sm:w-auto bg-gold text-black px-8 py-4 text-lg rounded-md font-medium hover:bg-gold/80 transition-all duration-300 inline-block shadow-lg hover:shadow-xl"
+                >
+                  Book Your Appointment
+                </button>
+                <button
+                  onClick={callBarbershop}
+                  className="w-full sm:w-auto bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 text-lg rounded-md font-medium hover:bg-white/30 transition-all duration-300 inline-block shadow-lg hover:shadow-xl"
+                >
+                  📞 Call Now
+                </button>
+              </div>
               <div className="text-white/70 text-sm">
                 <p>📍 3480 Platinum Dr., Unit 105, Mississauga</p>
                 <p>📞 (905) 607-4400</p>

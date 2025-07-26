@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import OptimizedImage from '../ui/OptimizedImage';
 import BookingCTA from '../ui/BookingCTA';
-import { openCojilioBooking } from '../../utils/cojilio';
+import { openCojilioBooking, callBarbershop } from '../../utils/cojilio';
 
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);

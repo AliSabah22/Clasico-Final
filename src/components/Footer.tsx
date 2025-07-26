@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { callBarbershop } from '../utils/cojilio';
 
 export default function Footer() {
   return (
@@ -44,6 +45,12 @@ export default function Footer() {
               <p className="text-white/80">
                 <span className="font-medium">Phone:</span> 905 607 4400
               </p>
+              <button
+                onClick={callBarbershop}
+                className="mt-3 bg-gold text-black px-4 py-2 rounded-lg font-medium hover:bg-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                📞 Call Now
+              </button>
             </div>
           </div>
 
