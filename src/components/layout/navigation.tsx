@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { openCojilioBooking } from '../../../utils/cojilio';
+import { openCojilioBooking } from '../../utils/cojilio';
 
 interface NavigationItem {
   name: string;
