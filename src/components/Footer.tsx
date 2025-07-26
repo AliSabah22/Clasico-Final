@@ -79,6 +79,17 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/60">
           <p>&copy; {new Date().getFullYear()} Clasico Barbershop. All rights reserved.</p>
+          <p className="mt-2">
+            Made by{' '}
+            <Link 
+              href="https://pixelrush.netlify.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gold hover:text-gold/80 transition-colors duration-300 font-medium"
+            >
+              PIXELRUSH SITES
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
