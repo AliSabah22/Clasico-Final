@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Scissors, Star, Droplet } from "lucide-react";
+import Packages from "../../components/Packages";
 
 const serviceCategories = [
   {
@@ -156,6 +157,8 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      
+      <Packages />
       
       <Footer />
     </>

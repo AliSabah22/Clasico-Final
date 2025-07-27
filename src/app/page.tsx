@@ -5,7 +5,7 @@ import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Navigation from "../components/Navigation";
-import Services from "../components/sections/Services";
+import ServicesList from "../components/sections/ServicesList";
 import SignatureExperience from "../components/SignatureExperience";
 import Testimonials from "../components/sections/Testimonials";
 import ContentGallery from "../components/ContentGallery";
@@ -138,7 +138,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <Services />
+      <ServicesList />
       <SignatureExperience />
       <Testimonials />
       <Gallery />
