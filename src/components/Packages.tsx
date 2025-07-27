@@ -7,7 +7,7 @@ const packages = [
   {
     name: "Silver Package",
     description: "Essential grooming services for the modern man",
-    price: "$45",
+    price: "$145",
     features: ["Classic Haircut", "Beard Trim", "Hot Towel Treatment"],
     logo: "/images/packages/silver.png?v=2",
     popular: false
@@ -15,7 +15,7 @@ const packages = [
   {
     name: "Gold Package",
     description: "Premium grooming experience with luxury touches",
-    price: "$75",
+    price: "$148.5",
     features: ["Premium Haircut", "Beard Styling", "Hot Towel Treatment", "Signature Aftershave"],
     logo: "/images/packages/gold.png?v=2",
     popular: true
@@ -23,7 +23,7 @@ const packages = [
   {
     name: "Platinum Package",
     description: "Ultimate grooming experience with exclusive services",
-    price: "$120",
+    price: "$264",
     features: ["Luxury Haircut", "Beard Sculpting", "Hot Towel Treatment", "Signature Aftershave", "Private Consultation"],
     logo: "/images/packages/platinum.png?v=2",
     popular: false
