@@ -15,6 +15,8 @@ export default function SignatureExperience() {
     if (video && loading) {
       const handleCanPlay = () => {
         loading.style.display = 'none';
+        // Minimal fix: try to play the video in case autoplay was blocked
+        video.play().catch(() => {});
       };
       
       const handleError = () => {
