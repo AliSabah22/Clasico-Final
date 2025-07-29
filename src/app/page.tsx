@@ -14,7 +14,7 @@ import Gallery from '../components/sections/Gallery';
 import dynamic from 'next/dynamic';
 import LoadingState from '../components/ui/LoadingState'
 import { scrollToSection } from '../utils/scroll';
-import { openCojilioBooking } from '../utils/cojilio';
+import { openCojilioBooking, callBarbershop } from '../utils/cojilio';
 import RobustImage from '../components/ui/RobustImage';
 import FloatingCallButton from '../components/ui/FloatingCallButton';
 
@@ -36,6 +36,10 @@ const fadeInUp = {
 export default function Home() {
   const handleBookNow = () => {
     openCojilioBooking();
+  };
+
+  const handleCallNow = () => {
+    callBarbershop();
   };
 
   return (
@@ -82,12 +86,19 @@ export default function Home() {
                 initial="initial"
                 animate="animate"
                 transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4"
               >
                 <button 
                   onClick={handleBookNow}
                   className="btn-primary text-xl px-10 py-4"
                 >
                   Book Your Appointment
+                </button>
+                <button 
+                  onClick={handleCallNow}
+                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-md font-medium transition-all duration-300 hover:bg-white hover:text-black shadow-lg hover:shadow-xl text-xl"
+                >
+                  Call Now
                 </button>
               </motion.div>
             </div>
