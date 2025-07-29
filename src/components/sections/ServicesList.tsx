@@ -13,6 +13,11 @@ export default function ServicesList() {
     openCojilioBooking();
   };
 
+  const handleServiceClick = (serviceName: string) => {
+    console.log(`Booking service: ${serviceName}`);
+    openCojilioBooking();
+  };
+
   const serviceCategories = [
     {
       name: "Hair & Beard",
@@ -142,7 +147,19 @@ export default function ServicesList() {
                 {/* Services List */}
                 <div className="space-y-4 flex-grow">
                   {category.services.map((service) => (
-                    <div key={service.name} className="flex justify-between items-start border-b border-white/10 pb-3">
+                    <div 
+                      key={service.name} 
+                      className="flex justify-between items-start border-b border-white/10 pb-3 cursor-pointer hover:bg-white/5 rounded-lg p-2 transition-all duration-200 hover:transform hover:scale-105"
+                      onClick={() => handleServiceClick(service.name)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          handleServiceClick(service.name);
+                        }
+                      }}
+                    >
                       <span className="text-white/80 pr-2 text-sm md:text-base leading-relaxed">{service.name}</span>
                       <span className="font-semibold text-gold text-right whitespace-nowrap text-sm md:text-base">
                         {typeof service.price === 'number' ? `$${service.price.toFixed(2)}` : service.price}
