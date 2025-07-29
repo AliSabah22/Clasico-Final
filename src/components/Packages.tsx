@@ -6,25 +6,43 @@ import { openCojilioBooking } from '../utils/cojilio';
 const packages = [
   {
     name: "Silver Package",
-    description: "Essential grooming services for the modern man",
+    description: "Essential grooming package with machine precision",
     price: "$145",
-    features: ["Classic Haircut", "Beard Trim", "Hot Towel Treatment"],
+    features: [
+      "45 minutes required",
+      "3 haircuts",
+      "3 beard trim line-up (machine)",
+      "Valid for 3 months only",
+      "Minimum time for haircut is 45 minutes"
+    ],
     logo: "/images/packages/silver.png?v=2",
     popular: false
   },
   {
     name: "Gold Package",
-    description: "Premium grooming experience with luxury touches",
+    description: "Premium grooming package with blade precision",
     price: "$148.5",
-    features: ["Premium Haircut", "Beard Styling", "Hot Towel Treatment", "Signature Aftershave"],
+    features: [
+      "45 minutes required",
+      "3 haircuts",
+      "3 beard trim line-up (blade/shaver)",
+      "Valid for 3 months only",
+      "Minimum time for haircut is 45 minutes"
+    ],
     logo: "/images/packages/gold.png?v=2",
     popular: true
   },
   {
     name: "Platinum Package",
-    description: "Ultimate grooming experience with exclusive services",
+    description: "Ultimate grooming package with extended benefits",
     price: "$264",
-    features: ["Luxury Haircut", "Beard Sculpting", "Hot Towel Treatment", "Signature Aftershave", "Private Consultation"],
+    features: [
+      "45 minutes required",
+      "6 haircuts",
+      "6 beard trim line-up (blade/shaver)",
+      "Valid for 6 months only",
+      "Minimum time for haircut is 45 minutes"
+    ],
     logo: "/images/packages/platinum.png?v=2",
     popular: false
   }
