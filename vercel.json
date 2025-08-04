@@ -51,10 +51,6 @@
         {
           "key": "Accept-Ranges",
           "value": "bytes"
-        },
-        {
-          "key": "Content-Type",
-          "value": "video/mp4"
         }
       ]
     },
